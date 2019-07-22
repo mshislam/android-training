@@ -20,6 +20,7 @@
         android:layout_margin="5dp"
         android:layout_below="@id/backArrow"
         android:background="@drawable/round_text"/>
+
     <EditText
         android:id="@+id/lastName"
         android:textSize="15dp"

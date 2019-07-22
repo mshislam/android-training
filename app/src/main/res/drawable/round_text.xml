@@ -7,7 +7,6 @@
         android:right="5dp"
         android:top="0dp" />
 
-
     <corners
         android:bottomLeftRadius="@android:dimen/app_icon_size"
         android:bottomRightRadius="@android:dimen/app_icon_size"
