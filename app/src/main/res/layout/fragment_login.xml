@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+        <EditText
+            android:id="@+id/enteremailtext"
+            android:layout_width="350dp"
+            android:layout_height="35dp"
+            android:hint="@string/email"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:inputType="textEmailAddress"
+            android:background="@color/colorPrimary"
+            />
+
+    <EditText
+        android:id="@+id/enterpassword"
+        android:layout_height="35dp"
+        android:layout_width="350dp"
+        android:layout_marginTop="20dp"
+        android:hint="@string/password"
+        android:layout_gravity="center"
+        android:background="@color/colorPrimary"
+        android:inputType="textPassword"/>
+
+    <Button
+        android:id="@+id/loginButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:text="@string/login"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center"
+        />
+
+
+    />
+
+<RelativeLayout
+    android:id="@+id/rlayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+
+    <TextView
+        android:id="@+id/forgotpasswordbutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/forgotpassword"
+        android:textColor="#3F51B5"
+        android:layout_marginTop="20dp"
+        android:layout_alignParentLeft="true"
+        />
+    <TextView
+        android:id="@+id/registerbutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#3F51B5"
+
+        android:text="@string/register"
+        android:layout_marginTop="20dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        />
+
+</RelativeLayout>
+
+</LinearLayout>

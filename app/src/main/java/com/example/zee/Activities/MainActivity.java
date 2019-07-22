@@ -1,16 +1,16 @@
-package com.example.zee;
+package com.example.zee.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-import javax.xml.validation.Validator;
+import com.example.zee.R;
 
-public class InfoActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_info);
+        setContentView(R.layout.activity_main);
     }
 }
