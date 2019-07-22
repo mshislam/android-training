@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">zeina</string>
+    <string name="email">please enter your email or phone number</string>
+    <string name="password">please enter your password</string>
+    <string name="login">login</string>
+    <string name="forgotpassword">Forgot password ?</string>
+    <string name="register">Register</string>
+
+
 </resources>
