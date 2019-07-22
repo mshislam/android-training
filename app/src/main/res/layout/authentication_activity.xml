@@ -4,5 +4,11 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/layout_auth_main">
+    <fragment
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/fragment_auth"
+        android:name="com.example.zee.Fragments.LoginFragment"
+        />
 
 </RelativeLayout>
