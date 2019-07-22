@@ -1,9 +1,12 @@
-package com.example.zee;
+package com.example.zee.Activities;
 
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.zee.Fragments.LoginFragment;
+import com.example.zee.R;
 
 public class AuthenticationActivity extends AppCompatActivity {
 
