@@ -13,7 +13,7 @@
             android:layout_gravity="center"
             android:layout_marginTop="20dp"
             android:inputType="textEmailAddress"
-            android:background="@color/colorPrimary"
+            android:background="@drawable/round_text"
             />
 
     <EditText
@@ -23,14 +23,14 @@
         android:layout_marginTop="20dp"
         android:hint="@string/password"
         android:layout_gravity="center"
-        android:background="@color/colorPrimary"
+        android:background="@drawable/round_text"
         android:inputType="textPassword"/>
 
     <Button
         android:id="@+id/loginButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
+        android:background="@drawable/round_button"
         android:text="@string/login"
         android:layout_marginTop="20dp"
         android:layout_gravity="center"
@@ -51,7 +51,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/forgotpassword"
-        android:textColor="#3F51B5"
+        android:textColor="#2196F3"
         android:layout_marginTop="20dp"
         android:layout_alignParentLeft="true"
         />
@@ -59,7 +59,7 @@
         android:id="@+id/registerbutton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="#3F51B5"
+        android:textColor="#2196F3"
 
         android:text="@string/register"
         android:layout_marginTop="20dp"
