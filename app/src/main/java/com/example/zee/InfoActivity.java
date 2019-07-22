@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
+import javax.xml.validation.Validator;
+
 public class InfoActivity extends AppCompatActivity {
 
     @Override
