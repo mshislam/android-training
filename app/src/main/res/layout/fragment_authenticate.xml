@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<RelativeLayout
+    android:id="@+id/layout_first"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AuthenticateFragment"
+    android:layout_marginTop="@dimen/_150sdp"
+    >
+
+    <!-- TODO: Update blank fragment layout -->
+    <EditText
+        android:id="@+id/edt_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Email"
+        android:textAlignment="center"/>
+
+    <Button
+        android:layout_marginLeft="@dimen/_120sdp"
+        android:layout_below="@+id/edt_email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn_validate"
+        android:text="validate" />
+</RelativeLayout>
+<RelativeLayout
+    android:id="@+id/layout_second"
+    android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:context=".AuthenticateFragment"
+android:layout_marginTop="@dimen/_150sdp"
+    android:visibility="invisible">
+    <TextView
+        android:id="@+id/txt_message_to_enter"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Please enter verification code"
+        android:textSize="@dimen/_12sdp"
+        android:textAlignment="center"
+        />
+    <EditText
+        android:id="@+id/edt_code"
+        android:layout_width="match_parent"
+        android:layout_below="@id/txt_message_to_enter"
+        android:layout_height="wrap_content"
+        android:hint="Code"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:textAlignment="center"/>
+    <Button
+        android:layout_marginLeft="@dimen/_120sdp"
+        android:layout_below="@+id/edt_code"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn_send"
+        android:text="send" />
+</RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/layout_third"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".AuthenticateFragment"
+        android:layout_marginTop="@dimen/_150sdp"
+        android:visibility="invisible"
+        >
+
+
+    <EditText
+        android:id="@+id/edt_pss"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Password"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:textAlignment="center"
+        android:inputType="textPassword"/>
+        <EditText
+            android:id="@+id/edt_con_pss"
+            android:layout_below="@+id/edt_pss"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Confirm Password"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:textAlignment="center"
+            android:inputType="textPassword"/>
+        <Button
+            android:layout_marginLeft="@dimen/_110sdp"
+            android:layout_below="@+id/edt_con_pss"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btn_set"
+            android:text="Set Password" />
+    </RelativeLayout>
+
+</RelativeLayout>
