@@ -48,14 +48,9 @@ public class LoginFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         final View view = inflater.inflate(R.layout.fragment_login, container,
                 false);
-<<<<<<< HEAD
         emailtext=(EditText) view.findViewById(R.id.enteremailtext);
         password=(EditText)view.findViewById(R.id.enterpassword);
         registerbtn=view.findViewById(R.id.registerbutton);
-=======
-        emailtext = (EditText) view.findViewById(R.id.enteremailtext);
-        registerbtn = view.findViewById(R.id.registerbutton);
->>>>>>> 43297da2df44489633e775fcc5926afbfadf186d
 
         loginbtn = view.findViewById(R.id.loginButton);
         forgetbtn = view.findViewById(R.id.forgotpasswordbutton);
@@ -90,21 +85,9 @@ public class LoginFragment extends Fragment {
         loginbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-<<<<<<< HEAD
                 if(TextUtil.isValid(emailtext)){
                     Toast.makeText(getContext(),"valid phone number or emial",Toast.LENGTH_LONG).show();
                     request();
-
-=======
-//                if (isValidEmail(getEmailId) || isValidPhone(getEmailId)) {
-//                    Toast.makeText(getContext(),"thanks",Toast.LENGTH_LONG);
-//                }
-                Toast.makeText(getContext(), "invalid", Toast.LENGTH_LONG);
-                if (TextUtil.isValid(emailtext)) {
-                    Toast.makeText(getContext(), "valid email address", Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(getContext(), "Invalid email address or phone number", Toast.LENGTH_SHORT).show();
->>>>>>> 43297da2df44489633e775fcc5926afbfadf186d
                 }
                 Toast.makeText(getContext(), "Invalid email address or phone number", Toast.LENGTH_SHORT).show();
 
