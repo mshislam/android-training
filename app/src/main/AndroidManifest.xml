@@ -23,4 +23,7 @@
         <activity android:name=".Activities.AuthenticationActivity"></activity>
     </application>
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
+
 </manifest>
