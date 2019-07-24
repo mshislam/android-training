@@ -5,7 +5,6 @@ import android.widget.EditText;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-
 public class TextUtil {
 
     public static boolean isValid(EditText input) {
@@ -32,16 +31,18 @@ public class TextUtil {
         return false;
 
     }
-    public static boolean isEmpty(EditText et){
-        if(et.getText().toString().isEmpty()){
+
+    public static boolean isEmpty(EditText et) {
+        if (et.getText().toString().isEmpty()) {
             return false;
-        }else {
+        } else {
             return true;
         }
 
     }
-    public static boolean isString(EditText et){
-        Pattern pattern=Pattern.compile("^[A-Za-z, ]++$");
+
+    public static boolean isString(EditText et) {
+        Pattern pattern = Pattern.compile("^[A-Za-z, ]++$");
         return pattern.matcher(et.getText().toString()).matches();
     }
 
