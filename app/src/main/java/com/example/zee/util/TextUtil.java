@@ -5,25 +5,35 @@ import android.widget.EditText;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class TextUtil  {
+public class TextUtil {
     EditText emailtext;
     String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
     String pattern = "^\\s*(?:\\+?(\\d{1,3}))?[-. (]*(\\d{3})[-. )]*(\\d{3})[-. ]*(\\d{4})(?: *x(\\d+))?\\s*$";
     Matcher m;
-
-    public Boolean isValidEmail(EditText e){
-
-    if(emailtext.getText().toString().isEmpty()) {
-        return false;
+    public static Boolean isValidEmailM(EditText e){
+        Pattern patternFromString=Pattern.compile( "[a-zA-Z0-9\\+\\.\\_\\%\\-\\+]{1,256}" +
+                "\\@" +
+                "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,64}" +
+                "(" +
+                "\\." +
+                "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,25}" +
+                ")+");
+        return patternFromString.matcher(e.getText()).matches();
     }
-    else {
-        if (emailtext.getText().toString().trim().matches(emailPattern)) {
-            return true;
-        } else {
+
+    public Boolean isValidEmail(EditText e) {
+
+        if (emailtext.getText().toString().isEmpty()) {
             return false;
+        } else {
+            if (emailtext.getText().toString().trim().matches(emailPattern)) {
+                return true;
+            } else {
+                return false;
+            }
         }
     }
-}
+
     //
 //
     public Boolean isValidPhone(EditText emailtext) {
@@ -32,8 +42,9 @@ public class TextUtil  {
             m = r.matcher(emailtext.getText().toString().trim());
         }
         if (m.find()) {
-            return true;        }
-        else {
-            return false;        }
+            return true;
+        } else {
+            return false;
+        }
     }
 }
