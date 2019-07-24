@@ -10,7 +10,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
 
-        <activity android:name=".AuthenticationActivity"></activity>
         <activity android:name=".Activities.HomeActivity"></activity>
         <activity android:name=".Activities.InfoActivity"></activity>
         <activity android:name=".Activities.MainActivity">
