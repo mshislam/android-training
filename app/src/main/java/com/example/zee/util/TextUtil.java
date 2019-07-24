@@ -5,46 +5,44 @@ import android.widget.EditText;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+
 public class TextUtil {
-    EditText emailtext;
-    String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
-    String pattern = "^\\s*(?:\\+?(\\d{1,3}))?[-. (]*(\\d{3})[-. )]*(\\d{3})[-. ]*(\\d{4})(?: *x(\\d+))?\\s*$";
-    Matcher m;
-    public static Boolean isValidEmailM(EditText e){
-        Pattern patternFromString=Pattern.compile( "[a-zA-Z0-9\\+\\.\\_\\%\\-\\+]{1,256}" +
-                "\\@" +
-                "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,64}" +
-                "(" +
-                "\\." +
-                "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,25}" +
-                ")+");
-        return patternFromString.matcher(e.getText()).matches();
-    }
 
-    public Boolean isValidEmail(EditText e) {
-
-        if (emailtext.getText().toString().isEmpty()) {
+    public static boolean isValid(EditText input) {
+        String myText = input.getText().toString();
+        if (myText == null) {
             return false;
-        } else {
-            if (emailtext.getText().toString().trim().matches(emailPattern)) {
-                return true;
-            } else {
-                return false;
-            }
         }
-    }
-
-    //
-//
-    public Boolean isValidPhone(EditText emailtext) {
-        Pattern r = Pattern.compile(pattern);
-        if (!emailtext.getText().toString().isEmpty()) {
-            m = r.matcher(emailtext.getText().toString().trim());
-        }
-        if (m.find()) {
+        //check if myText is phoneNumber
+        String expression = "^[\\w\\.-]+@([\\w\\-]+\\.)+[A-Z]{2,4}$";
+        Pattern pattern = Pattern.compile(expression, Pattern.CASE_INSENSITIVE);
+        Matcher matcher = pattern.matcher(myText);
+        if (matcher.matches()) {
             return true;
-        } else {
-            return false;
         }
+        String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\." +
+                "[a-zA-Z0-9_+&*-]+)*@" +
+                "(?:[a-zA-Z0-9-]+\\.)+[a-z" +
+                "A-Z]{2,7}$";
+
+        Pattern pat = Pattern.compile(emailRegex);
+        if (pat.matcher(myText).matches()) {
+            return true;
+        }
+        return false;
+
     }
+    public static boolean isEmpty(EditText et){
+        if(et.getText().toString().isEmpty()){
+            return false;
+        }else {
+            return true;
+        }
+
+    }
+    public static boolean isString(EditText et){
+        Pattern pattern=Pattern.compile("^[A-Za-z, ]++$");
+        return pattern.matcher(et.getText().toString()).matches();
+    }
+
 }

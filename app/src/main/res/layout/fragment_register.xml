@@ -54,7 +54,7 @@
             android:layout_below="@+id/email"
             android:layout_margin="5dp"
             android:background="@drawable/round_text"
-            android:hint="Enter your phone name..."
+            android:hint="Enter your phone number..."
             android:textSize="15dp" />
 
         <EditText

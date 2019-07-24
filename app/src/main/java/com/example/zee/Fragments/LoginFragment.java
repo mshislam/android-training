@@ -1,6 +1,7 @@
 package com.example.zee.Fragments;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +20,11 @@ import com.example.zee.R;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import com.example.zee.util.TextUtil;
+import com.example.zee.util.TextUtil;
+
+import static android.content.ContentValues.TAG;
+
 public class LoginFragment extends Fragment {
     Button loginbtn;
     TextView registerbtn;
@@ -32,21 +38,36 @@ public class LoginFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        final View view=inflater.inflate(R.layout.fragment_login,container,
+        final View view = inflater.inflate(R.layout.fragment_login, container,
                 false);
-        emailtext=(EditText) view.findViewById(R.id.enteremailtext);
-        registerbtn=view.findViewById(R.id.registerbutton);
+        emailtext = (EditText) view.findViewById(R.id.enteremailtext);
+        registerbtn = view.findViewById(R.id.registerbutton);
 
-        loginbtn=view.findViewById(R.id.loginButton);
-        forgetbtn=view.findViewById(R.id.forgotpasswordbutton);
+        loginbtn = view.findViewById(R.id.loginButton);
+        forgetbtn = view.findViewById(R.id.forgotpasswordbutton);
         forgetbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Toast.makeText(getActivity(), "toast", Toast.LENGTH_SHORT).show();
                 ForgetPassFragment fragment = new ForgetPassFragment();
                 FragmentManager fragmentmanager = getActivity().getSupportFragmentManager();
                 fragmentmanager.
                         beginTransaction().
-                        add(R.id.fragment_auth,
+                        replace(R.id.fragment_auth, fragment)
+                        .addToBackStack("")
+                        .show(fragment)
+                        .commit();
+            }
+        });
+
+        registerbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                RegisterFragment fragment = new RegisterFragment();
+                FragmentManager fragmentmanager = getActivity().getSupportFragmentManager();
+                fragmentmanager.
+                        beginTransaction().
+                        replace(R.id.fragment_auth,
                                 fragment,
                                 "myfrag").addToBackStack(null).show(fragment).commit();
             }
@@ -59,45 +80,45 @@ public class LoginFragment extends Fragment {
 //                    Toast.makeText(getContext(),"thanks",Toast.LENGTH_LONG);
 //                }
                 Toast.makeText(getContext(), "invalid", Toast.LENGTH_LONG);
-                if (isValidEmail(emailtext) || isValidPhone(emailtext)) {
+                if (TextUtil.isValid(emailtext)) {
                     Toast.makeText(getContext(), "valid email address", Toast.LENGTH_SHORT).show();
                 } else {
                     Toast.makeText(getContext(), "Invalid email address or phone number", Toast.LENGTH_SHORT).show();
-
-
                 }
             }
         });
 
 
         return view;
-        }
-
-        public Boolean isValidEmail(EditText e){
-
-            if(emailtext.getText().toString().isEmpty()) {
-                return false;
-            }
-            else {
-                if (emailtext.getText().toString().trim().matches(emailPattern)) {
-                    return true;
-                } else {
-                    return false;
-                }
-            }
     }
+
+//        public Boolean isValidEmail(EditText e){
+//
+//            if(emailtext.getText().toString().isEmpty()) {
+//                return false;
+//            }
+//            else {
+//                if (emailtext.getText().toString().trim().matches(emailPattern)) {
+//                    return true;
+//                } else {
+//                    return false;
+//                }
+//            }
+//    }
+////
+////
+//    public Boolean isValidPhone(EditText emailtext) {
+//        Pattern r = Pattern.compile(pattern);
+//        if (!emailtext.getText().toString().isEmpty()) {
+//            m = r.matcher(emailtext.getText().toString().trim());
+//        }
+//        if (m.find()) {
+//                   return true;        }
+//        else {
+//return false;        }
 //
 //
-    public Boolean isValidPhone(EditText emailtext) {
-        Pattern r = Pattern.compile(pattern);
-        if (!emailtext.getText().toString().isEmpty()) {
-            m = r.matcher(emailtext.getText().toString().trim());
-        }
-        if (m.find()) {
-                   return true;        }
-        else {
-return false;        }
-    }
+//    }
 //
 //
 //    }
