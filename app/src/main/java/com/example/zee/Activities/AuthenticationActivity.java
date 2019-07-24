@@ -1,17 +1,16 @@
 package com.example.zee.Activities;
 
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.zee.Fragments.ForgetPassFragment;
 import com.example.zee.Fragments.LoginFragment;
 import com.example.zee.R;
 
-public class AuthenticationActivity extends AppCompatActivity {
-
-
-
+public class AuthenticationActivity extends AppCompatActivity implements ForgetPassFragment.OnFragmentInteractionListener {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -26,8 +25,10 @@ public class AuthenticationActivity extends AppCompatActivity {
         androidx.fragment.app.FragmentTransaction transaction = manager.beginTransaction();
         transaction.replace(R.id.fragment_auth, new LoginFragment());
         transaction.commit();
-
-
     }
 
+    @Override
+    public void onFragmentInteraction(Uri uri) {
+
+    }
 }
