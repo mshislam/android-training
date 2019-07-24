@@ -10,15 +10,16 @@ public class TextUtil {
     String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
     String pattern = "^\\s*(?:\\+?(\\d{1,3}))?[-. (]*(\\d{3})[-. )]*(\\d{3})[-. ]*(\\d{4})(?: *x(\\d+))?\\s*$";
     Matcher m;
-    public static Boolean isValidEmailM(EditText e){
-        Pattern patternFromString=Pattern.compile( "[a-zA-Z0-9\\+\\.\\_\\%\\-\\+]{1,256}" +
+
+    public static Boolean isValidEmailOrPhone(EditText e) {
+        Pattern patternFromString = Pattern.compile("[a-zA-Z0-9\\+\\.\\_\\%\\-\\+]{1,256}" +
                 "\\@" +
                 "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,64}" +
                 "(" +
                 "\\." +
                 "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,25}" +
                 ")+");
-        return patternFromString.matcher(e.getText()).matches();
+        return patternFromString.matcher(e.getText().toString()).matches();
     }
 
     public Boolean isValidEmail(EditText e) {
