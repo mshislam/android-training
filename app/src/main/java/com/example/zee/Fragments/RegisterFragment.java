@@ -9,8 +9,12 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.zee.R;
+import com.example.zee.util.TextUtil;
 
 
 /**
@@ -30,7 +34,15 @@ public class RegisterFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-
+    private EditText firstName;
+    private EditText lastName;
+    private EditText email;
+    private EditText phone;
+    private EditText password;
+    private EditText confirmPass;
+    private EditText title;
+    private EditText companyName;
+    private Button registerButton;
     private OnFragmentInteractionListener mListener;
 
     public RegisterFragment() {
@@ -68,7 +80,24 @@ public class RegisterFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_register, container, false);
+        View view= inflater.inflate(R.layout.fragment_register, container, false);
+        firstName=view.findViewById(R.id.firstName);
+        lastName=view.findViewById(R.id.lastName);
+        email=view.findViewById(R.id.email);
+        phone=view.findViewById(R.id.phone);
+        password=view.findViewById(R.id.password);
+        confirmPass=view.findViewById(R.id.confirmPass);
+        companyName=view.findViewById(R.id.company);
+        title=view.findViewById(R.id.title);
+        registerButton=view.findViewById(R.id.registerButton);
+        registerButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                validateAll();
+            }
+        });
+
+return view;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -108,5 +137,29 @@ public class RegisterFragment extends Fragment {
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
+    }
+    public void validateAll(){
+        if((TextUtil.isString(firstName)==false)|| TextUtil.isEmpty(firstName)==false){
+            firstName.setError("must be Alphabets");
+        }
+        if((TextUtil.isString(lastName)==false)|| TextUtil.isEmpty(lastName)==false){
+            lastName.setError("must be Alphabets");
+        }
+        if((TextUtil.isValid(email)==false)|| TextUtil.isEmpty(email)==false){
+            email.setError("invalid email");
+        }
+        if((TextUtil.isValid(phone)==false)|| TextUtil.isEmpty(phone)==false){
+            phone.setError("invalid phone");
+        }
+        if((TextUtil.isString(title)==false)|| TextUtil.isEmpty(title)==false){
+            title.setError("must be Alphabets");
+        }
+        if((TextUtil.isString(companyName)==false)|| TextUtil.isEmpty(companyName)==false){
+            companyName.setError("must be Alphabets");
+        }
+        if ((password.getText().toString().equals(confirmPass.getText().toString()))) {
+        } else {
+            password.setError("doesnot match");
+        }
     }
 }

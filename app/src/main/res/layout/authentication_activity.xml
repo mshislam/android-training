@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
 
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:id="@+id/layout_auth_main"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/layout_auth_main">
-    <fragment
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
         android:id="@+id/fragment_auth"
-        android:name="com.example.zee.Fragments.LoginFragment"
-        />
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
 </RelativeLayout>

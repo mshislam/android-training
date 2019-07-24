@@ -2,6 +2,7 @@ package com.example.zee.Fragments;
 
 import android.app.DownloadManager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,7 +28,11 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import com.example.zee.Util.TextUtil;
+
+import com.example.zee.util.TextUtil;
+import com.example.zee.util.TextUtil;
+
+import static android.content.ContentValues.TAG;
 
 
 public class LoginFragment extends Fragment {
@@ -41,22 +46,42 @@ public class LoginFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        final View view=inflater.inflate(R.layout.fragment_login,container,
+        final View view = inflater.inflate(R.layout.fragment_login, container,
                 false);
+<<<<<<< HEAD
         emailtext=(EditText) view.findViewById(R.id.enteremailtext);
         password=(EditText)view.findViewById(R.id.enterpassword);
         registerbtn=view.findViewById(R.id.registerbutton);
+=======
+        emailtext = (EditText) view.findViewById(R.id.enteremailtext);
+        registerbtn = view.findViewById(R.id.registerbutton);
+>>>>>>> 43297da2df44489633e775fcc5926afbfadf186d
 
-        loginbtn=view.findViewById(R.id.loginButton);
-        forgetbtn=view.findViewById(R.id.forgotpasswordbutton);
+        loginbtn = view.findViewById(R.id.loginButton);
+        forgetbtn = view.findViewById(R.id.forgotpasswordbutton);
         forgetbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Toast.makeText(getActivity(), "toast", Toast.LENGTH_SHORT).show();
                 ForgetPassFragment fragment = new ForgetPassFragment();
                 FragmentManager fragmentmanager = getActivity().getSupportFragmentManager();
                 fragmentmanager.
                         beginTransaction().
-                        add(R.id.fragment_auth,
+                        replace(R.id.fragment_auth, fragment)
+                        .addToBackStack("")
+                        .show(fragment)
+                        .commit();
+            }
+        });
+
+        registerbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                RegisterFragment fragment = new RegisterFragment();
+                FragmentManager fragmentmanager = getActivity().getSupportFragmentManager();
+                fragmentmanager.
+                        beginTransaction().
+                        replace(R.id.fragment_auth,
                                 fragment,
                                 "myfrag").addToBackStack(null).show(fragment).commit();
             }
@@ -65,10 +90,21 @@ public class LoginFragment extends Fragment {
         loginbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+<<<<<<< HEAD
                 if(TextUtil.isValid(emailtext)){
                     Toast.makeText(getContext(),"valid phone number or emial",Toast.LENGTH_LONG).show();
                     request();
 
+=======
+//                if (isValidEmail(getEmailId) || isValidPhone(getEmailId)) {
+//                    Toast.makeText(getContext(),"thanks",Toast.LENGTH_LONG);
+//                }
+                Toast.makeText(getContext(), "invalid", Toast.LENGTH_LONG);
+                if (TextUtil.isValid(emailtext)) {
+                    Toast.makeText(getContext(), "valid email address", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(getContext(), "Invalid email address or phone number", Toast.LENGTH_SHORT).show();
+>>>>>>> 43297da2df44489633e775fcc5926afbfadf186d
                 }
                 Toast.makeText(getContext(), "Invalid email address or phone number", Toast.LENGTH_SHORT).show();
 
@@ -120,7 +156,7 @@ public class LoginFragment extends Fragment {
 
 
         return view;
-        }
+    }
 
 //        public Boolean isValidEmail(EditText e){
 //

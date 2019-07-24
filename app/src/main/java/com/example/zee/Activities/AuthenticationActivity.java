@@ -8,9 +8,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.zee.Fragments.ForgetPassFragment;
 import com.example.zee.Fragments.LoginFragment;
+import com.example.zee.Fragments.RegisterFragment;
 import com.example.zee.R;
 
-public class AuthenticationActivity extends AppCompatActivity implements ForgetPassFragment.OnFragmentInteractionListener {
+public class AuthenticationActivity extends AppCompatActivity implements RegisterFragment.OnFragmentInteractionListener {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -19,8 +20,7 @@ public class AuthenticationActivity extends AppCompatActivity implements ForgetP
         fragment();
     }
 
-    public void fragment(){
-
+    public void fragment() {
         androidx.fragment.app.FragmentManager manager = getSupportFragmentManager();
         androidx.fragment.app.FragmentTransaction transaction = manager.beginTransaction();
         transaction.replace(R.id.fragment_auth, new LoginFragment());
@@ -29,6 +29,6 @@ public class AuthenticationActivity extends AppCompatActivity implements ForgetP
 
     @Override
     public void onFragmentInteraction(Uri uri) {
-
+        
     }
 }
