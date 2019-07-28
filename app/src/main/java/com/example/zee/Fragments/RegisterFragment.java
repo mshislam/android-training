@@ -14,7 +14,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.zee.R;
-import com.example.zee.util.TextUtil;
+import com.example.zee.Util.TextUtil;
 
 
 /**

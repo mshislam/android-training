@@ -1,5 +1,6 @@
 package com.example.zee.Fragments;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,8 +12,9 @@ import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
+import com.example.zee.Networks.ForgetPass;
 import com.example.zee.R;
-import com.example.zee.util.TextUtil;
+import com.example.zee.Util.TextUtil;
 
 public class ForgetPassFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
@@ -84,7 +86,7 @@ public class ForgetPassFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 if ((passfirst.getText().toString().equals(passsec.getText().toString()))) {
-                    Toast.makeText(getActivity(), "passwords match", Toast.LENGTH_LONG).show();
+                   ForgetPass.forgetPassword(getContext(),passfirst,ForgetPassFragment.this);
                 } else {
                     passsec.setError("doesnot match");
                 }
@@ -102,9 +104,7 @@ public class ForgetPassFragment extends Fragment {
                 if (TextUtil.isEmpty(code)) {
                     code.setError("insert code");
                 } else {
-                    Toast.makeText(getActivity(), ":)", Toast.LENGTH_LONG).show();
-
-                    showFragmentthree();
+                    ForgetPass.checkVerificationCodeExists(getContext(),code,ForgetPassFragment.this);
                 }
             }
         });
@@ -114,8 +114,7 @@ public class ForgetPassFragment extends Fragment {
     public void onClickValidate(View v) {
         EditText fdt = v.findViewById(R.id.edt_email);
         if (TextUtil.isValid(fdt)) {
-            Toast.makeText(getActivity(), ":)", Toast.LENGTH_LONG).show();
-            showsecondlayout();
+            ForgetPass.sendVerificationCode(getContext(),fdt,ForgetPassFragment.this);
         } else {
             fdt.setError("invalid email");
         }
@@ -130,5 +129,11 @@ public class ForgetPassFragment extends Fragment {
         second.setVisibility(View.GONE);
         third.setVisibility(View.VISIBLE);
 
+    }
+    public void showLogin(){
+        androidx.fragment.app.FragmentManager manager = getActivity().getSupportFragmentManager() ;
+        androidx.fragment.app.FragmentTransaction transaction = manager.beginTransaction();
+        transaction.replace(R.id.fragment_auth, new LoginFragment());
+        transaction.commit();
     }
 }

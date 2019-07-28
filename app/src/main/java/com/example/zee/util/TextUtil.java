@@ -1,4 +1,4 @@
-package com.example.zee.util;
+package com.example.zee.Util;
 
 import android.widget.EditText;
 
@@ -34,9 +34,9 @@ public class TextUtil {
 
     public static boolean isEmpty(EditText et) {
         if (et.getText().toString().isEmpty()) {
-            return false;
-        } else {
             return true;
+        } else {
+            return false;
         }
 
     }
