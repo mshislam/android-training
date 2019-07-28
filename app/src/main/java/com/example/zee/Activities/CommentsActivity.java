@@ -6,7 +6,7 @@ import android.os.Bundle;
 
 import com.example.zee.R;
 
-public class InfoActivity extends AppCompatActivity {
+public class CommentsActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
