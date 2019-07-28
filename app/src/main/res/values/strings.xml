@@ -2,8 +2,8 @@
     <string name="app_name">Social</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="email">please enter your email or phone number</string>
-    <string name="password">please enter your password</string>
+    <string name="email_or_phone_hint">email or phone</string>
+    <string name="password">password</string>
     <string name="login">login</string>
     <string name="forgotpassword">Forgot password ?</string>
     <string name="register">Register</string>

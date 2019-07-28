@@ -31,7 +31,7 @@ import java.util.regex.Pattern;
 
 import com.example.zee.Util.TextUtil;
 import com.example.zee.Util.TextUtil;
-
+import com.example.zee.Networks.LoginNetwork;
 import static android.content.ContentValues.TAG;
 
 
@@ -87,7 +87,7 @@ public class LoginFragment extends Fragment {
             public void onClick(View view) {
                 if(TextUtil.isValid(emailtext)){
                     Toast.makeText(getContext(),"valid phone number or emial",Toast.LENGTH_LONG).show();
-                    request();
+                    LoginNetwork.request(getContext(),emailtext,password);
                 }
                 Toast.makeText(getContext(), "Invalid email address or phone number", Toast.LENGTH_SHORT).show();
 
@@ -103,36 +103,36 @@ public class LoginFragment extends Fragment {
 //
 //                }
             }
-            public void request(){
-                String URL="http://eventi-do1.mideastsoft.com/fdc2019v1.0/api/v2/fdc/login";
-                RequestQueue mRequestQueue= Volley.newRequestQueue(getContext());
-                StringRequest stringRequest=new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        Toast.makeText(getContext(), "login successful" + response.toString(), Toast.LENGTH_LONG).show();
-
-                    }
-                }, new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        error.printStackTrace();
-
-                    }
-                }){
-                    @Override
-                    public Map getParams() {
-                        Map params = new HashMap();
-                        params.put("email", emailtext.getText().toString());
-                        params.put("password", password.getText().toString());
-                        params.put("notificationToken","gfcshc;usdfpi");
-//                Toast.makeText(getApplicationContext(), " " + params.toString(), Toast.LENGTH_LONG).show();
-                        return params;
-                    }
-                };
-
-
-                mRequestQueue.add(stringRequest);
-            }
+//            public void request(){
+//                String URL="http://eventi-do1.mideastsoft.com/fdc2019v1.0/api/v2/fdc/login";
+//                RequestQueue mRequestQueue= Volley.newRequestQueue(getContext());
+//                StringRequest stringRequest=new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
+//                    @Override
+//                    public void onResponse(String response) {
+//                        Toast.makeText(getContext(), "login successful" + response.toString(), Toast.LENGTH_LONG).show();
+//
+//                    }
+//                }, new Response.ErrorListener() {
+//                    @Override
+//                    public void onErrorResponse(VolleyError error) {
+//                        error.printStackTrace();
+//
+//                    }
+//                }){
+//                    @Override
+//                    public Map getParams() {
+//                        Map params = new HashMap();
+//                        params.put("email", emailtext.getText().toString());
+//                        params.put("password", password.getText().toString());
+//                        params.put("notificationToken","gfcshc;usdfpi");
+////                Toast.makeText(getApplicationContext(), " " + params.toString(), Toast.LENGTH_LONG).show();
+//                        return params;
+//                    }
+//                };
+//
+//
+//                mRequestQueue.add(stringRequest);
+//            }
 
 
         });
