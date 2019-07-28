@@ -29,8 +29,8 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import com.example.zee.util.TextUtil;
-import com.example.zee.util.TextUtil;
+import com.example.zee.Util.TextUtil;
+import com.example.zee.Util.TextUtil;
 import com.example.zee.Networks.LoginNetwork;
 import static android.content.ContentValues.TAG;
 
