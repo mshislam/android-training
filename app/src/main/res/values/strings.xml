@@ -7,6 +7,9 @@
     <string name="login">login</string>
     <string name="forgotpassword">Forgot password ?</string>
     <string name="register">Register</string>
+    <string name="name">Name</string>
+    <string name="date">Date</string>
+    <string name="commentsarea">Comments Area</string>
 
     >>>>>>> 03409144a50ec669e4139de0e32b80d7e24f313f
 </resources>

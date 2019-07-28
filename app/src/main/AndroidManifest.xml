@@ -19,9 +19,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activities.InfoActivity" />
         <activity android:name=".Activities.MainActivity"></activity>
         <activity android:name=".Activities.AuthenticationActivity"></activity>
+        <activity android:name=".Activities.CommentsActivity"></activity>
     </application>
 
 </manifest>
