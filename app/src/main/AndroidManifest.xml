@@ -10,17 +10,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
 
-        <activity android:name=".Activities.HomeActivity"></activity>
+        <activity android:name=".Activities.HomeActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".Activities.InfoActivity"></activity>
         <activity android:name=".Activities.MainActivity">
 
         </activity>
 
         <activity android:name=".Activities.AuthenticationActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+
         </activity>
     </application>
 

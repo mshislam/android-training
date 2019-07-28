@@ -2,6 +2,7 @@ package com.example.zee.Networks;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -23,11 +24,11 @@ public class LoginNetwork {
         StringRequest stringRequest=new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                Toast.makeText(con, "login successful" + response.toString(), Toast.LENGTH_LONG).show();
-                if (response.toLowerCase().contains("success")){
+                Toast.makeText(con, "login " + response.toString(), Toast.LENGTH_LONG).show();
+               /* if (response.toLowerCase().contains("success")){*/
                     Intent homeActivity =new Intent(con, HomeActivity.class);
                     con.startActivity(homeActivity);
-                }
+                /*}*/
             }
         }, new Response.ErrorListener() {
             @Override
