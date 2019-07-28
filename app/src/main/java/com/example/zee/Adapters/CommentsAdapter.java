@@ -33,6 +33,7 @@ public CommentsAdapter(Context mContext,ArrayList arrayList){
 @Override
 public CommentsHolder onCreateViewHolder(ViewGroup parent,int viewType){
     View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.comments_adapter,parent,false);
+
     return new CommentsHolder(view);
 
 
