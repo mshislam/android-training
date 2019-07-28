@@ -5,6 +5,7 @@
     android:layout_height="match_parent">
 
 
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -87,6 +88,15 @@
                 android:textAlignment="center"
                 android:textColor="#2196F3"
                 android:textStyle="bold|italic" />
+            <CheckBox
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="remember me"
+                android:textColor="#2196F3"
+                android:textStyle="bold|italic"
+                android:id="@+id/remembermecheckbox"
+                android:layout_below="@+id/forgotpasswordbutton"
+               />
 
             <TextView
                 android:id="@+id/registerbutton"

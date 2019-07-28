@@ -1,12 +1,16 @@
 package com.example.zee.Fragments;
 
 import android.app.DownloadManager;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -22,6 +26,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.bumptech.glide.disklrucache.DiskLruCache;
 import com.example.zee.R;
 
 import java.util.HashMap;
@@ -48,6 +53,7 @@ public class LoginFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         final View view = inflater.inflate(R.layout.fragment_login, container,
                 false);
+
         emailtext=(EditText) view.findViewById(R.id.enteremailtext);
         password=(EditText)view.findViewById(R.id.enterpassword);
         registerbtn=view.findViewById(R.id.registerbutton);
@@ -85,9 +91,18 @@ public class LoginFragment extends Fragment {
         loginbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+//                SharedPreferences.Editor editor=sharedPreferences.edit();
+//                String u=emailtext.getText().toString();
+//                String p=password.getText().toString();
+
+
                 if(TextUtil.isValid(emailtext)){
                     Toast.makeText(getContext(),"valid phone number or emial",Toast.LENGTH_LONG).show();
                     LoginNetwork.request(getContext(),emailtext,password);
+//                    editor.putString("name",u);
+//                    editor.putString("pass",p);
+//                    editor.commit();
+
                 }
                 Toast.makeText(getContext(), "Invalid email address or phone number", Toast.LENGTH_SHORT).show();
 
@@ -137,11 +152,10 @@ public class LoginFragment extends Fragment {
 
         });
 
-
         return view;
     }
 
-//        public Boolean isValidEmail(EditText e){
+    //        public Boolean isValidEmail(EditText e){
 //
 //            if(emailtext.getText().toString().isEmpty()) {
 //                return false;
