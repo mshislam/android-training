@@ -20,7 +20,7 @@ public class AuthenticationActivity extends AppCompatActivity implements Registe
         fragment();
     }
 
-    public void fragment() {
+    public  void fragment() {
         androidx.fragment.app.FragmentManager manager = getSupportFragmentManager();
         androidx.fragment.app.FragmentTransaction transaction = manager.beginTransaction();
         transaction.replace(R.id.fragment_auth, new LoginFragment());
