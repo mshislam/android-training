@@ -8,11 +8,11 @@ public class WebServiceConstants {
         public static String first_name = "first_name";
         public static String last_name = "last_name";
         public static String email = "email";
-        public static String mobile = "email";
-        public static String password = "email";
-        public static String confirm_password = "email";
-        public static String company = "email";
-        public static String title = "email";
+        public static String mobile = "mobile";
+        public static String password = "password";
+        public static String confirm_password = "confirm_password";
+        public static String company = "company";
+        public static String title = "title";
     }
 
     public static class Comments {
