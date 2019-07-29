@@ -18,4 +18,6 @@
     <string name="name">Name</string>
     <string name="date">Date</string>
     <string name="commentsarea">Comments Area</string>
+    <string name="post">Post</string>
+    <string name="write_post">Write post</string>
 </resources>
