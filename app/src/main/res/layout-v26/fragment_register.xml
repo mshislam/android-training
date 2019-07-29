@@ -41,9 +41,7 @@
             android:layout_margin="@dimen/_5sdp"
             android:background="@drawable/round_text"
             android:hint="@string/last_name"
-            android:textSize="@dimen/_15sdp"
-            android:importantForAutofill="no"
-            android:inputType="text" />
+            android:textSize="@dimen/_15sdp" />
 
         <EditText
             android:id="@+id/email"
@@ -53,9 +51,7 @@
             android:layout_margin="@dimen/_5sdp"
             android:background="@drawable/round_text"
             android:hint="@string/email"
-            android:textSize="@dimen/_15sdp"
-            android:importantForAutofill="no"
-            android:inputType="text" />
+            android:textSize="@dimen/_15sdp" />
 
         <EditText
             android:id="@+id/phone"
@@ -66,8 +62,7 @@
             android:layout_margin="@dimen/_5sdp"
             android:background="@drawable/round_text"
             android:hint="@string/phone"
-            android:textSize="@dimen/_15sdp"
-            android:importantForAutofill="no" />
+            android:textSize="@dimen/_15sdp" />
 
         <EditText
             android:id="@+id/password"
@@ -78,8 +73,7 @@
             android:layout_margin="@dimen/_5sdp"
             android:background="@drawable/round_text"
             android:hint="@string/passwordHint"
-            android:textSize="@dimen/_15sdp"
-            android:importantForAutofill="no" />
+            android:textSize="@dimen/_15sdp" />
 
         <EditText
             android:id="@+id/confirmPass"
@@ -90,8 +84,7 @@
             android:layout_margin="@dimen/_5sdp"
             android:background="@drawable/round_text"
             android:hint="@string/confirm_password"
-            android:textSize="@dimen/_15sdp"
-            android:importantForAutofill="no" />
+            android:textSize="@dimen/_15sdp" />
 
         <EditText
             android:id="@+id/company"
@@ -101,9 +94,7 @@
             android:layout_margin="@dimen/_5sdp"
             android:background="@drawable/round_text"
             android:hint="@string/company_name"
-            android:textSize="@dimen/_15sdp"
-            android:importantForAutofill="no"
-            android:inputType="text" />
+            android:textSize="@dimen/_15sdp" />
 
         <EditText
             android:id="@+id/title"

@@ -1,7 +1,8 @@
 package com.example.zee.Networks;
 
 public class WebServiceConstants {
-    private static String baseURL = "http://eventi-do1.mideastsoft.com/staging/api/v2/fdc/";
+    private static String baseURL = "http://eventi-do1.mideastsoft.com/fdc2019v1.0/api/v2/fdc/";
+
     public static class registerKeys {
         static String API_REGISTER = baseURL + "registration";
         public static String first_name = "first_name";

@@ -7,6 +7,14 @@
     <string name="login">login</string>
     <string name="forgotpassword">Forgot password ?</string>
     <string name="register">Register</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="company_name">Company name</string>
+    <string name="title">Title</string>
+    <string name="passwordHint">Password</string>
+    <string name="phone">Phone</string>
+    <string name="email">Email</string>
+    <string name="last_name">last name</string>
+    <string name="first_name">First name</string>
 
->>>>>>> 03409144a50ec669e4139de0e32b80d7e24f313f
+    >>>>>>> 03409144a50ec669e4139de0e32b80d7e24f313f
 </resources>
