@@ -19,7 +19,7 @@ public class RegistrationNetwork {
     public static void request(final Context context, final String firstName, final String lastName, final String email, final String phone,
                                final String password, final String confirmPass, final String company, final String title) {
         RequestQueue mRequestQueue = Volley.newRequestQueue(context);
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, WebServiceConstants.registerKeys.API_REGISTER, new Response.Listener<String>() {
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, WebServiceConstants.Register.API_REGISTER, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 try {
@@ -47,14 +47,14 @@ public class RegistrationNetwork {
             @Override
             public Map getParams() {
                 Map parameters = new HashMap();
-                parameters.put(WebServiceConstants.registerKeys.first_name, firstName);
-                parameters.put(WebServiceConstants.registerKeys.last_name, lastName);
-                parameters.put(WebServiceConstants.registerKeys.email, email);
-                parameters.put(WebServiceConstants.registerKeys.mobile, phone);
-                parameters.put(WebServiceConstants.registerKeys.password, password);
-                parameters.put(WebServiceConstants.registerKeys.confirm_password, confirmPass);
-                parameters.put(WebServiceConstants.registerKeys.company, company);
-                parameters.put(WebServiceConstants.registerKeys.title, title);
+                parameters.put(WebServiceConstants.Register.first_name, firstName);
+                parameters.put(WebServiceConstants.Register.last_name, lastName);
+                parameters.put(WebServiceConstants.Register.email, email);
+                parameters.put(WebServiceConstants.Register.mobile, phone);
+                parameters.put(WebServiceConstants.Register.password, password);
+                parameters.put(WebServiceConstants.Register.confirm_password, confirmPass);
+                parameters.put(WebServiceConstants.Register.company, company);
+                parameters.put(WebServiceConstants.Register.title, title);
                 return parameters;
             }
         };
