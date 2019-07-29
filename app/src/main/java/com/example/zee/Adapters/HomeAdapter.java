@@ -60,10 +60,10 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeHolder> {
                    activity.startActivity(shareToApps);
                 }
                 if(!(holder.postImage.toString().isEmpty())){
-                  /*  Uri imageUri = Uri.parse(String.valueOf(holder.imagePost));
+                  /* Uri imageUri = Uri.parse(String.valueOf(holder.imagePost));
                     shareToApps.putExtra(Intent.EXTRA_STREAM, imageUri);
-                    shareToApps.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);*/
-
+                    shareToApps.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+*/
                 }
 
 
