@@ -10,6 +10,18 @@
     <string name="name">Name</string>
     <string name="date">Date</string>
     <string name="commentsarea">Comments Area</string>
+    <string name="email">Email</string>
+    <string name="validate">validate</string>
+    <string name="code">Code</string>
+    <string name="verCodeMess">Please enter verification code</string>
+    <string name="send">send</string>
+    <string name="Password">Password</string>
+    <string name="confirmPassword">Confirm Password</string>
+    <string name="setPassword">Set Password</string>
+
+
+
+
 
     >>>>>>> 03409144a50ec669e4139de0e32b80d7e24f313f
 </resources>
