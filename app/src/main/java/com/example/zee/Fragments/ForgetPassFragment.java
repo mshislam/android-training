@@ -1,6 +1,5 @@
 package com.example.zee.Fragments;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,7 +7,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
-import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
@@ -71,7 +69,7 @@ public class ForgetPassFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
 
-        final View v = inflater.inflate(R.layout.fragment_authenticate, container, false);
+        final View v = inflater.inflate(R.layout.fragment_forget_password, container, false);
 
         first = v.findViewById(R.id.layout_first);
         second = v.findViewById(R.id.layout_second);

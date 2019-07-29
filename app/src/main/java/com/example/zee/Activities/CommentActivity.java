@@ -6,11 +6,11 @@ import android.os.Bundle;
 
 import com.example.zee.R;
 
-public class InfoActivity extends AppCompatActivity {
+public class CommentActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_info);
+        setContentView(R.layout.activity_comment);
     }
 }
