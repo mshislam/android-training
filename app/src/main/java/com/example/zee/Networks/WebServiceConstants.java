@@ -14,4 +14,9 @@ public class WebServiceConstants {
         public static String company = "email";
         public static String title = "email";
     }
+
+    public static class Comments {
+        static String API_LIST_COMMENTS = baseURL + "listCommrnts";
+        public static String post_id = "post_id";
+    }
 }

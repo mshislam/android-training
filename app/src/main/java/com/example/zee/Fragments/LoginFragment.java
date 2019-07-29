@@ -1,17 +1,10 @@
 package com.example.zee.Fragments;
 
-import android.app.DownloadManager;
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
-import android.provider.VoicemailContract;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -21,35 +14,9 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
-import com.bumptech.glide.disklrucache.DiskLruCache;
-import com.example.zee.R;
-
-import java.util.HashMap;
-import java.util.Map;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
-import com.example.zee.Util.TextUtil;
-import com.example.zee.Util.TextUtil;
 import com.example.zee.Networks.LoginNetwork;
-import com.google.gson.Gson;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonParseException;
-import com.google.gson.JsonParser;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import com.example.zee.util.*;
-
-import static android.content.ContentValues.TAG;
+import com.example.zee.R;
+import com.example.zee.Util.TextUtil;
 
 
 public class LoginFragment extends Fragment {
@@ -107,17 +74,15 @@ public class LoginFragment extends Fragment {
 //                SharedPreferences.Editor editor=sharedPreferences.edit();
 //                String u=emailtext.getText().toString();
 //                String p=password.getText().toString();
-
-
                 if (TextUtil.isValid(emailtext)) {
-                    Toast.makeText(getContext(), "valid phone number or emial", Toast.LENGTH_LONG).show();
-                    LoginNetwork.request(getContext(), emailtext, password);
+//                    Toast.makeText(getContext(), "valid phone number or emial", Toast.LENGTH_LONG).show();
+                    LoginNetwork.request(getContext(), emailtext.getText().toString(), password.getText().toString());
 //                    editor.putString("name",u);
 //                    editor.putString("pass",p);
 //                    editor.commit();
 
                 }
-                Toast.makeText(getContext(), "Invalid email address or phone number", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getContext(), "Invalid email address or phone number", Toast.LENGTH_SHORT).show();
 
 ////                if (isValidEmail(getEmailId) || isValidPhone(getEmailId)) {
 ////                    Toast.makeText(getContext(),"thanks",Toast.LENGTH_LONG);
@@ -130,60 +95,8 @@ public class LoginFragment extends Fragment {
 //
 //
 //                }
+
             }
-
-            public void request() {
-                String URL = "http://eventi-do1.mideastsoft.com/staging/api/v2/fdc/login";
-                RequestQueue mRequestQueue = Volley.newRequestQueue(getContext());
-                StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        Toast.makeText(getContext(), "login successful" + response.toString(), Toast.LENGTH_LONG).show();
-                        Gson g = new Gson();
-                        JSONObject ArrayFromString = null;
-                        try {
-                            ArrayFromString = new JSONObject(response);
-                            if (ArrayFromString.has("status"))
-                                if (ArrayFromString.getString("status").equals("success")) {
-                                    com.example.zee.Util.SharedPrefUtil.getInstance(getContext()).write(Constants.apiToken, ArrayFromString.getString("api_token"));
-                                } else if (ArrayFromString.getString("status").equals("fail")) {
-                                    Toast.makeText(getContext(), "Email or password are not correct!", Toast.LENGTH_SHORT).show();
-                                } else {
-                                    Toast.makeText(getContext(), "Something went wrong!", Toast.LENGTH_SHORT).show();
-                                }
-                            else {
-                                Toast.makeText(getContext(), "Something went wrong!", Toast.LENGTH_SHORT).show();
-                            }
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-
-
-                    }
-                }, new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        error.printStackTrace();
-
-                    }
-                }) {
-
-                    @Override
-                    public Map getParams() {
-                        Map params = new HashMap();
-                        params.put("email", emailtext.getText().toString());
-                        params.put("password", password.getText().toString());
-                        params.put("notificationToken", "gfcshc;usdfpi");
-//                Toast.makeText(getApplicationContext(), " " + params.toString(), Toast.LENGTH_LONG).show();
-                        return params;
-                    }
-                };
-
-
-                mRequestQueue.add(stringRequest);
-            }
-
-
         });
 
         return view;
