@@ -59,6 +59,9 @@ public CommentsHolder onCreateViewHolder(ViewGroup parent,int viewType){
              myComments=itemView.findViewById(R.id.commentsspace);
              myImage=itemView.findViewById(R.id.commentsimage);
 
-         }}
+         }
+
+
+}
 
 
