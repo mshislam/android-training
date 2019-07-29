@@ -3,6 +3,8 @@ package com.example.zee.Networks;
 public class WebServiceConstants {
     private static String baseURL = "http://eventi-do1.mideastsoft.com/staging/api/v2/fdc/";
 
+    public static String API_TOKEN = "api_token";
+
     public static class Register {
         static String API_REGISTER = baseURL + "registration";
         public static String first_name = "first_name";
