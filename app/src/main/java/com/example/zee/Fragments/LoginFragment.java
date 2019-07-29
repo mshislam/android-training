@@ -1,12 +1,17 @@
 package com.example.zee.Fragments;
 
 import android.app.DownloadManager;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
+import android.provider.VoicemailContract;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -22,6 +27,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.bumptech.glide.disklrucache.DiskLruCache;
 import com.example.zee.R;
 
 import java.util.HashMap;
@@ -32,6 +38,17 @@ import java.util.regex.Pattern;
 import com.example.zee.Util.TextUtil;
 import com.example.zee.Util.TextUtil;
 import com.example.zee.Networks.LoginNetwork;
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonParseException;
+import com.google.gson.JsonParser;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import com.example.zee.util.*;
+
 import static android.content.ContentValues.TAG;
 
 
@@ -48,9 +65,11 @@ public class LoginFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         final View view = inflater.inflate(R.layout.fragment_login, container,
                 false);
-        emailtext=(EditText) view.findViewById(R.id.enteremailtext);
-        password=(EditText)view.findViewById(R.id.enterpassword);
-        registerbtn=view.findViewById(R.id.registerbutton);
+
+        com.example.zee.Util.SharedPrefUtil.getInstance(getContext()).write("apitoken", "");
+        emailtext = (EditText) view.findViewById(R.id.enteremailtext);
+        password = (EditText) view.findViewById(R.id.enterpassword);
+        registerbtn = view.findViewById(R.id.registerbutton);
 
         loginbtn = view.findViewById(R.id.loginButton);
         forgetbtn = view.findViewById(R.id.forgotpasswordbutton);
@@ -85,9 +104,18 @@ public class LoginFragment extends Fragment {
         loginbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(TextUtil.isValid(emailtext)){
-                    Toast.makeText(getContext(),"valid phone number or emial",Toast.LENGTH_LONG).show();
-                    LoginNetwork.request(getContext(),emailtext,password);
+//                SharedPreferences.Editor editor=sharedPreferences.edit();
+//                String u=emailtext.getText().toString();
+//                String p=password.getText().toString();
+
+
+                if (TextUtil.isValid(emailtext)) {
+                    Toast.makeText(getContext(), "valid phone number or emial", Toast.LENGTH_LONG).show();
+                    LoginNetwork.request(getContext(), emailtext, password);
+//                    editor.putString("name",u);
+//                    editor.putString("pass",p);
+//                    editor.commit();
+
                 }
                 Toast.makeText(getContext(), "Invalid email address or phone number", Toast.LENGTH_SHORT).show();
 
@@ -103,45 +131,66 @@ public class LoginFragment extends Fragment {
 //
 //                }
             }
-//            public void request(){
-//                String URL="http://eventi-do1.mideastsoft.com/fdc2019v1.0/api/v2/fdc/login";
-//                RequestQueue mRequestQueue= Volley.newRequestQueue(getContext());
-//                StringRequest stringRequest=new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
-//                    @Override
-//                    public void onResponse(String response) {
-//                        Toast.makeText(getContext(), "login successful" + response.toString(), Toast.LENGTH_LONG).show();
-//
-//                    }
-//                }, new Response.ErrorListener() {
-//                    @Override
-//                    public void onErrorResponse(VolleyError error) {
-//                        error.printStackTrace();
-//
-//                    }
-//                }){
-//                    @Override
-//                    public Map getParams() {
-//                        Map params = new HashMap();
-//                        params.put("email", emailtext.getText().toString());
-//                        params.put("password", password.getText().toString());
-//                        params.put("notificationToken","gfcshc;usdfpi");
-////                Toast.makeText(getApplicationContext(), " " + params.toString(), Toast.LENGTH_LONG).show();
-//                        return params;
-//                    }
-//                };
-//
-//
-//                mRequestQueue.add(stringRequest);
-//            }
+
+            public void request() {
+                String URL = "http://eventi-do1.mideastsoft.com/staging/api/v2/fdc/login";
+                RequestQueue mRequestQueue = Volley.newRequestQueue(getContext());
+                StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        Toast.makeText(getContext(), "login successful" + response.toString(), Toast.LENGTH_LONG).show();
+                        Gson g = new Gson();
+                        JSONObject ArrayFromString = null;
+                        try {
+                            ArrayFromString = new JSONObject(response);
+                            if (ArrayFromString.has("status"))
+                                if (ArrayFromString.getString("status").equals("success")) {
+                                    com.example.zee.Util.SharedPrefUtil.getInstance(getContext()).write(Constants.apiToken, ArrayFromString.getString("api_token"));
+                                } else if (ArrayFromString.getString("status").equals("fail")) {
+                                    Toast.makeText(getContext(), "Email or password are not correct!", Toast.LENGTH_SHORT).show();
+                                } else {
+                                    Toast.makeText(getContext(), "Something went wrong!", Toast.LENGTH_SHORT).show();
+                                }
+                            else {
+                                Toast.makeText(getContext(), "Something went wrong!", Toast.LENGTH_SHORT).show();
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+
+                    }
+                }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        error.printStackTrace();
+
+                    }
+                }) {
+
+                    @Override
+                    public Map getParams() {
+                        Map params = new HashMap();
+                        params.put("email", emailtext.getText().toString());
+                        params.put("password", password.getText().toString());
+                        params.put("notificationToken", "gfcshc;usdfpi");
+//                Toast.makeText(getApplicationContext(), " " + params.toString(), Toast.LENGTH_LONG).show();
+                        return params;
+                    }
+                };
+
+
+                mRequestQueue.add(stringRequest);
+            }
 
 
         });
 
-
         return view;
     }
 
-//        public Boolean isValidEmail(EditText e){
+
+    //        public Boolean isValidEmail(EditText e){
 //
 //            if(emailtext.getText().toString().isEmpty()) {
 //                return false;

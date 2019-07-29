@@ -5,26 +5,15 @@ import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
-
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
+import com.example.zee.Networks.RegistrationNetwork;
 import com.example.zee.R;
-
-
-import java.util.HashMap;
-import java.util.Map;
+import java.util.Random;
 
 
 /**
@@ -53,6 +42,7 @@ public class RegisterFragment extends Fragment {
     private EditText title;
     private EditText companyName;
     private Button registerButton;
+    private Button backArrow;
     private OnFragmentInteractionListener mListener;
 
     public RegisterFragment() {
@@ -87,80 +77,113 @@ public class RegisterFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view= inflater.inflate(R.layout.fragment_register, container, false);
-        firstName=view.findViewById(R.id.firstName);
-        lastName=view.findViewById(R.id.lastName);
-        email=view.findViewById(R.id.email);
-        phone=view.findViewById(R.id.phone);
-        password=view.findViewById(R.id.password);
-        confirmPass=view.findViewById(R.id.confirmPass);
-        companyName=view.findViewById(R.id.company);
-        title=view.findViewById(R.id.title);
-        registerButton=view.findViewById(R.id.registerButton);
+        View view = inflater.inflate(R.layout.fragment_register, container, false);
+        firstName = view.findViewById(R.id.firstName);
+        lastName = view.findViewById(R.id.lastName);
+        email = view.findViewById(R.id.email);
+        phone = view.findViewById(R.id.phone);
+        password = view.findViewById(R.id.password);
+        confirmPass = view.findViewById(R.id.confirmPass);
+        companyName = view.findViewById(R.id.company);
+        title = view.findViewById(R.id.title);
+        backArrow = view.findViewById(R.id.backArrow);
+        registerButton = view.findViewById(R.id.registerButton);
 
         registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getActivity(), "toast", Toast.LENGTH_SHORT).show();
-                RegisterFragment fragment = new RegisterFragment();
-                FragmentManager fragmentmanager = getActivity().getSupportFragmentManager();
-                fragmentmanager.
-                        beginTransaction().
-                        replace(R.id.registerButton, fragment)
-                        .addToBackStack("")
-                        .show(fragment)
-                        .commit();
-            }
-        });
-
-
-        registerButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if((com.example.zee.Util.TextUtil.isValid(firstName)) && (com.example.zee.Util.TextUtil.isValid(lastName)) &&
+                /*if ((com.example.zee.Util.TextUtil.isValid(firstName)) && (com.example.zee.Util.TextUtil.isValid(lastName)) &&
                         (com.example.zee.Util.TextUtil.isValid(email)) && (com.example.zee.Util.TextUtil.isValid(phone)) &&
                         (com.example.zee.Util.TextUtil.isValid(password)) && (com.example.zee.Util.TextUtil.isValid(confirmPass)) &&
-                                (com.example.zee.Util.TextUtil.isValid(companyName)) && (com.example.zee.Util.TextUtil.isValid(title))){
-                    request();
+                        (com.example.zee.Util.TextUtil.isValid(companyName)) && (com.example.zee.Util.TextUtil.isValid(title))) {
+                    RegistrationNetwork.request(getContext(),firstName, lastName, email, phone, password, confirmPass, companyName, title);
+                }*/
+                if (validateAll()) {
+                    RegistrationNetwork.request(getContext(), firstName.getText().toString(),
+                            lastName.getText().toString(), email.getText().toString(),
+                            phone.getText().toString(), password.getText().toString(),
+                            confirmPass.getText().toString(), companyName.getText().toString(),
+                            title.getText().toString());
                 }
-            }
-            public void request(){
-                String URL="http://eventi-do1.mideastsoft.com/fdc2019v1.0/api/v2/fdc/register";
-                RequestQueue mRequestQueue= Volley.newRequestQueue(getContext());
-                StringRequest stringRequest=new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        Toast.makeText(getContext(), "Registration done" + response.toString(), Toast.LENGTH_LONG).show();
-                    }
-                }, new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        error.printStackTrace();
-                    }
-                }){
-                    @Override
-                    public Map getParams() {
-                        Map parameters = new HashMap();
-                        parameters.put("firstName", firstName.getText().toString());
-                        parameters.put("lastName", lastName.getText().toString());
-                        parameters.put("email", email.getText().toString());
-                        parameters.put("phone", phone.getText().toString());
-                        parameters.put("password", password.getText().toString());
-                        parameters.put("confirmPass", confirmPass.getText().toString());
-                        parameters.put("company", companyName.getText().toString());
-                        parameters.put("title", title.getText().toString());
-                        return parameters;
-                    }
-                };
-                mRequestQueue.add(stringRequest);
             }
         });
 
-return view;
+        backArrow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getActivity().onBackPressed();
+            }
+        });
+        setRandomValues();
+        return view;
     }
+    public void setRandomValues() {
+        firstName.setText("testFN");
+        lastName.setText("testLN");
+        email.setText(generateRandomEmail());
+        phone.setText(generateRandomMobile());
+        password.setText("123456");
+        confirmPass.setText("123456");
+        companyName.setText("MES");
+        title.setText("Android Developer");
+    }
+
+    protected String generateRandomEmail() {
+        String SALTCHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+        StringBuilder salt = new StringBuilder();
+        Random rnd = new Random();
+        while (salt.length() < 10) { // length of the random string.
+            int index = (int) (rnd.nextFloat() * SALTCHARS.length());
+            salt.append(SALTCHARS.charAt(index));
+        }
+        String saltStr = salt.toString();
+        return saltStr + "@gmail.com";
+
+    }
+
+    protected String generateRandomMobile() {
+        String SALTCHARS = "1234567890";
+        StringBuilder salt = new StringBuilder();
+        Random rnd = new Random();
+        while (salt.length() < 8) { // length of the random string.
+            int index = (int) (rnd.nextFloat() * SALTCHARS.length());
+            salt.append(SALTCHARS.charAt(index));
+        }
+        String saltStr = salt.toString();
+        return "010" + saltStr;
+    }
+    /*private void request() {
+        String URL = "http://eventi-do1.mideastsoft.com/fdc2019v1.0/api/v2/fdc/register";
+        RequestQueue mRequestQueue = Volley.newRequestQueue(getContext());
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                Toast.makeText(getContext(), "Registration done" + response.toString(), Toast.LENGTH_LONG).show();
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                error.printStackTrace();
+            }
+        }) {
+            @Override
+            public Map getParams() {
+                Map parameters = new HashMap();
+                parameters.put("firstName", firstName.getText().toString());
+                parameters.put("lastName", lastName.getText().toString());
+                parameters.put("email", email.getText().toString());
+                parameters.put("phone", phone.getText().toString());
+                parameters.put("password", password.getText().toString());
+                parameters.put("confirmPass", confirmPass.getText().toString());
+                parameters.put("company", companyName.getText().toString());
+                parameters.put("title", title.getText().toString());
+                return parameters;
+            }
+        };
+        mRequestQueue.add(stringRequest);
+    }*/
 
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
@@ -200,28 +223,66 @@ return view;
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
     }
-    public void validateAll(){
-        if((com.example.zee.Util.TextUtil.isString(firstName)==false)|| com.example.zee.Util.TextUtil.isEmpty(firstName)==false){
-            firstName.setError("must be Alphabets");
+
+    public boolean validateAll() {
+
+        if (com.example.zee.Util.TextUtil.isEmpty(firstName) == true) {
+            firstName.setError("Required");
+            return false;
+        } else if ((com.example.zee.Util.TextUtil.isString(firstName) == false) || com.example.zee.Util.TextUtil.isEmpty(firstName) == true) {
+            firstName.setError("Must be Alphabets");
+            return false;
         }
-        if((com.example.zee.Util.TextUtil.isString(lastName)==false)|| com.example.zee.Util.TextUtil.isEmpty(lastName)==false){
-            lastName.setError("must be Alphabets");
+        if (com.example.zee.Util.TextUtil.isEmpty(lastName) == true) {
+            lastName.setError("Required");
+            return false;
+        } else if ((com.example.zee.Util.TextUtil.isString(lastName) == false)) {
+            lastName.setError("Must be Alphabets");
+            return false;
         }
-        if((com.example.zee.Util.TextUtil.isValid(email)==false)|| com.example.zee.Util.TextUtil.isEmpty(email)==false){
-            email.setError("invalid email");
+        if (com.example.zee.Util.TextUtil.isEmpty(email) == true) {
+            email.setError("Required");
+            return false;
+        } else if ((com.example.zee.Util.TextUtil.isValid(email) == false)) {
+            email.setError("Invalid email");
+            return false;
         }
-        if((com.example.zee.Util.TextUtil.isValid(phone)==false)|| com.example.zee.Util.TextUtil.isEmpty(phone)==false){
-            phone.setError("invalid phone");
+        if (com.example.zee.Util.TextUtil.isEmpty(phone) == true) {
+            phone.setError("Required");
+            return false;
+        } else if ((com.example.zee.Util.TextUtil.isValid(phone) == false)) {
+            phone.setError("Invalid phone");
+            return false;
         }
-        if((com.example.zee.Util.TextUtil.isString(title)==false)|| com.example.zee.Util.TextUtil.isEmpty(title)==false){
-            title.setError("must be Alphabets");
+        if (com.example.zee.Util.TextUtil.isEmpty(title) == true) {
+            title.setError("Required");
+            return false;
+        } else if ((com.example.zee.Util.TextUtil.isString(title) == false)) {
+            title.setError("Must be Alphabets");
+            return false;
         }
-        if((com.example.zee.Util.TextUtil.isString(companyName)==false)|| com.example.zee.Util.TextUtil.isEmpty(companyName)==false){
-            companyName.setError("must be Alphabets");
+        if (com.example.zee.Util.TextUtil.isEmpty(companyName) == true) {
+            companyName.setError("Required");
+            return false;
+        } else if ((com.example.zee.Util.TextUtil.isString(companyName) == false)) {
+            companyName.setError("Must be Alphabets");
+            return false;
         }
-        if ((password.getText().toString().equals(confirmPass.getText().toString()))) {
+        if (com.example.zee.Util.TextUtil.isEmpty(password) == true) {
+            password.setError("Required");
+            return false;
+        } else if (com.example.zee.Util.TextUtil.passIsValid(password) == false) {
+            password.setError("At least 6 characters");
+            return false;
+        }
+        if (com.example.zee.Util.TextUtil.isEmpty(confirmPass) == true) {
+            confirmPass.setError("Required");
+            return false;
+        } else if ((password.getText().toString().equals(confirmPass.getText().toString()))) {
         } else {
-            password.setError("doesnot match");
+            confirmPass.setError("Does not match");
+            return false;
         }
+        return true;
     }
 }

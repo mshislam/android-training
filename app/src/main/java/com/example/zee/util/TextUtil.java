@@ -1,49 +1,40 @@
 package com.example.zee.Util;
 
+import android.util.Patterns;
 import android.widget.EditText;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class TextUtil {
-
+    public static boolean isEmpty(EditText text) {
+        if (text.getText().toString().isEmpty()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
     public static boolean isValid(EditText input) {
         String myText = input.getText().toString();
         if (myText == null) {
             return false;
         }
-        //check if myText is phoneNumber
-        String expression = "^[\\w\\.-]+@([\\w\\-]+\\.)+[A-Z]{2,4}$";
-        Pattern pattern = Pattern.compile(expression, Pattern.CASE_INSENSITIVE);
-        Matcher matcher = pattern.matcher(myText);
-        if (matcher.matches()) {
+        if (Patterns.PHONE.matcher(myText).matches()) {
             return true;
-        }
-        String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\." +
-                "[a-zA-Z0-9_+&*-]+)*@" +
-                "(?:[a-zA-Z0-9-]+\\.)+[a-z" +
-                "A-Z]{2,7}$";
-
-        Pattern pat = Pattern.compile(emailRegex);
-        if (pat.matcher(myText).matches()) {
+        }else if (Patterns.EMAIL_ADDRESS.matcher(myText).matches()) {
             return true;
-        }
-        return false;
-
-    }
-
-    public static boolean isEmpty(EditText et) {
-        if (et.getText().toString().isEmpty()) {
-            return true;
-        } else {
+        }else {
             return false;
         }
-
     }
-
-    public static boolean isString(EditText et) {
+    public static boolean passIsValid(EditText text){
+        if (text.length() > 5)
+            return true;
+        else
+            return false;
+    }
+    public static boolean isString(EditText text) {
         Pattern pattern = Pattern.compile("^[A-Za-z, ]++$");
-        return pattern.matcher(et.getText().toString()).matches();
+        return pattern.matcher(text.getText().toString()).matches();
     }
-
 }

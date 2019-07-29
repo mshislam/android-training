@@ -69,7 +69,7 @@ public class ForgetPassFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
 
-        final View v = inflater.inflate(R.layout.fragment_forgetPassword, container, false);
+        final View v = inflater.inflate(R.layout.fragment_forget_password, container, false);
 
         first = v.findViewById(R.id.layout_first);
         second = v.findViewById(R.id.layout_second);
