@@ -1,8 +1,7 @@
 package com.example.zee.Models;
 
 
-public class User
-{
+public class User {
     private String image;
 
     private String role;
@@ -17,7 +16,7 @@ public class User
 
     private String email;
 
-    public String getImage ()
+    public String getImage()
     {
         return image;
     }

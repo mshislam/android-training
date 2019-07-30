@@ -4,6 +4,8 @@ public class WebServiceConstants {
     private static String baseURL = "http://eventi-do1.mideastsoft.com/staging/api/v2/fdc/";
 
     public static String API_TOKEN = "api_token";
+    public static String LIMIT = "limit";
+    public static String PAGE = "page";
 
     public static class Register {
         static String API_REGISTER = baseURL + "registration";
@@ -20,6 +22,10 @@ public class WebServiceConstants {
     public static class createPost {
         static String API_CREATEPOST = baseURL + "createPost";
         public static String text = "text";
+    }
+
+    public static class Posts {
+        static String LIST_POSTS = baseURL + "listPosts";
     }
 
     public static class Comments {

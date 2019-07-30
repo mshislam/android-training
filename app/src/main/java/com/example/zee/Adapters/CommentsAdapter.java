@@ -60,10 +60,7 @@ class CommentsHolder extends RecyclerView.ViewHolder {
         myDate = itemView.findViewById(R.id.commentsdate);
         myComments = itemView.findViewById(R.id.commentsspace);
         myImage = itemView.findViewById(R.id.commentsimage);
-
     }
-
-
 }
 
 
