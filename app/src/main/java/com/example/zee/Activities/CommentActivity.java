@@ -6,27 +6,22 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.widget.Toast;
 
 import com.example.zee.Adapters.CommentsAdapter;
-import com.example.zee.CallBack;
+import com.example.zee.CommentsInterface;
 import com.example.zee.Models.ListComments;
 import com.example.zee.Models.ResponseList;
 import com.example.zee.Networks.Comments;
-import com.example.zee.Networks.WebServiceConstants;
 import com.example.zee.R;
 import com.example.zee.util.Constants;
 import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 
-public class CommentActivity extends AppCompatActivity implements CallBack {
+public class CommentActivity extends AppCompatActivity implements CommentsInterface {
     ListComments listComments;
     private RecyclerView myComments;
 
@@ -59,6 +54,9 @@ public class CommentActivity extends AppCompatActivity implements CallBack {
         Toast.makeText(this, " " + response, Toast.LENGTH_SHORT).show();
         com.example.zee.Adapters.CommentsAdapter myAdapter = new CommentsAdapter(this, myArray);
         myComments.setAdapter(myAdapter);
+
+    }
+    public void onComment(String response){
 
     }
 }
