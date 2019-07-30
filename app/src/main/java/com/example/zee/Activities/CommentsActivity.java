@@ -11,6 +11,7 @@ import com.example.zee.R;
 import com.example.zee.Adapters.CommentsAdapter;
 
 import java.util.ArrayList;
+import  com.example.zee.Networks.Comments;
 
 public class CommentsActivity extends AppCompatActivity {
 
@@ -22,7 +23,9 @@ public class CommentsActivity extends AppCompatActivity {
         LinearLayoutManager mLinearLayoutManager=new LinearLayoutManager(CommentsActivity.this,RecyclerView.VERTICAL,false);
         mRecyclerView.setLayoutManager(mLinearLayoutManager);
         ArrayList commentsList=new ArrayList<Object>();
+
         CommentsAdapter commentsAdapter=new CommentsAdapter(CommentsActivity.this,commentsList);
+
         mRecyclerView.setAdapter(commentsAdapter);
     }
 }

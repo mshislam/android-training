@@ -1,48 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:padding="8dp">
-    
+
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/commentsimage"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginTop="5dp"
-        android:src="@drawable/round_button"
-        app:civ_border_width="2dp"
-        app:civ_border_color="@color/colorPrimaryDark"
-        android:gravity="center"
         android:cropToPadding="true"
-        />
+        android:gravity="center"
+        android:src="@drawable/round_button"
+        app:civ_border_color="@color/edt_border_color"
+        app:civ_border_width="@dimen/_2sdp" />
 
     <TextView
         android:id="@+id/commentsname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/_5sdp"
         android:layout_toRightOf="@id/commentsimage"
-        android:layout_marginLeft="15dp"
-        android:layout_marginTop="5dp"
-        android:text="@string/name"/>
+        android:text="@string/name" />
+
     <TextView
         android:id="@+id/commentsdate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/date"
-        android:layout_marginTop="5dp"
         android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"/>
+        android:layout_alignParentRight="true"
+        android:text="@string/date" />
+
     <TextView
         android:id="@+id/commentsspace"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/commentsarea"
-        android:layout_below="@+id/commentsdate"
+        android:layout_below="@+id/commentsname"
+        android:layout_marginTop="@dimen/_5sdp"
         android:layout_toRightOf="@id/commentsimage"
-        android:layout_marginLeft="15dp"
-        android:layout_marginTop="10dp"
-        />
-    
+        android:text="@string/commentsarea" />
 
-    </RelativeLayout>
+
+</RelativeLayout>
