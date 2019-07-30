@@ -6,8 +6,13 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.example.zee.Adapters.CommentsAdapter;
@@ -24,13 +29,16 @@ import java.util.ArrayList;
 public class CommentActivity extends AppCompatActivity implements CommentsInterface {
     ListComments listComments;
     private RecyclerView myComments;
+    private RelativeLayout editComments;
+    private EditText newComment;
+    private Button postNewComment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_comments);
         Comments.listComments(this,
-                com.example.zee.Util.SharedPrefUtil.getInstance(this).read(Constants.apiToken, ""),
+                com.example.zee.util.SharedPrefUtil.getInstance(this).read(Constants.apiToken, ""),
                 "96", this);
         myComments = findViewById(R.id.commentRecyclerActivity);
         myComments.setHasFixedSize(true);
@@ -39,6 +47,18 @@ public class CommentActivity extends AppCompatActivity implements CommentsInterf
         myComments.setLayoutManager(layoutManager);
         myComments.setItemAnimator(new DefaultItemAnimator());
         myComments.addItemDecoration(new DividerItemDecoration(this, LinearLayoutManager.VERTICAL));
+        editComments = findViewById(R.id.activity_postcomment);
+        newComment = editComments.findViewById(R.id.addComment);
+        postNewComment = editComments.findViewById(R.id.CommentButton);
+        postNewComment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Comments.createComments(CommentActivity.this,
+                        com.example.zee.util.SharedPrefUtil.getInstance(view.getContext()).read(Constants.apiToken, ""), "96",
+                        newComment.getText().toString(),
+                        CommentActivity.this);
+            }
+        });
 
     }
 
@@ -56,7 +76,9 @@ public class CommentActivity extends AppCompatActivity implements CommentsInterf
         myComments.setAdapter(myAdapter);
 
     }
-    public void onComment(String response){
 
+    public void onComment(String response) {
+        Gson gson = new Gson();
+        com.example.zee.Models.Comment jsonComment = gson.fromJson(response, com.example.zee.Models.Comment.class);
     }
 }

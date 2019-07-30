@@ -14,6 +14,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.zee.Activities.HomeActivity;
 import com.example.zee.util.Constants;
+import com.example.zee.util.SharedPrefUtil;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -35,11 +36,11 @@ public class LoginNetwork {
                     ArrayFromString = new JSONObject(response);
                     if (ArrayFromString.has("status"))
                         if (ArrayFromString.getString("status").equals("success")) {
-                            com.example.zee.Util.SharedPrefUtil.getInstance(context).write(Constants.apiToken,
+                            SharedPrefUtil.getInstance(context).write(Constants.apiToken,
                                     ArrayFromString.getJSONObject("user").getString("api_token"));
                             Intent homeActivity = new Intent(context, HomeActivity.class);
-                            com.example.zee.Util.SharedPrefUtil.getInstance(context).read(Constants.apiToken, "");
-                            Log.e("sharedPreference", "onResponse: " + com.example.zee.Util.SharedPrefUtil.getInstance(context).read(Constants.apiToken, ""));
+                            SharedPrefUtil.getInstance(context).read(Constants.apiToken, "");
+                            Log.e("sharedPreference", "onResponse: " + SharedPrefUtil.getInstance(context).read(Constants.apiToken, ""));
                             context.startActivity(homeActivity);
                             //finish context
                         } else if (ArrayFromString.getString("status").equals("fail")) {

@@ -226,56 +226,56 @@ public class RegisterFragment extends Fragment {
 
     public boolean validateAll() {
 
-        if (com.example.zee.Util.TextUtil.isEmpty(firstName) == true) {
+        if (com.example.zee.util.TextUtil.isEmpty(firstName) == true) {
             firstName.setError("Required");
             return false;
-        } else if ((com.example.zee.Util.TextUtil.isString(firstName) == false) || com.example.zee.Util.TextUtil.isEmpty(firstName) == true) {
+        } else if ((com.example.zee.util.TextUtil.isString(firstName) == false) || com.example.zee.util.TextUtil.isEmpty(firstName) == true) {
             firstName.setError("Must be Alphabets");
             return false;
         }
-        if (com.example.zee.Util.TextUtil.isEmpty(lastName) == true) {
+        if (com.example.zee.util.TextUtil.isEmpty(lastName) == true) {
             lastName.setError("Required");
             return false;
-        } else if ((com.example.zee.Util.TextUtil.isString(lastName) == false)) {
+        } else if ((com.example.zee.util.TextUtil.isString(lastName) == false)) {
             lastName.setError("Must be Alphabets");
             return false;
         }
-        if (com.example.zee.Util.TextUtil.isEmpty(email) == true) {
+        if (com.example.zee.util.TextUtil.isEmpty(email) == true) {
             email.setError("Required");
             return false;
-        } else if ((com.example.zee.Util.TextUtil.isValid(email) == false)) {
+        } else if ((com.example.zee.util.TextUtil.isValid(email) == false)) {
             email.setError("Invalid email");
             return false;
         }
-        if (com.example.zee.Util.TextUtil.isEmpty(phone) == true) {
+        if (com.example.zee.util.TextUtil.isEmpty(phone) == true) {
             phone.setError("Required");
             return false;
-        } else if ((com.example.zee.Util.TextUtil.isValid(phone) == false)) {
+        } else if ((com.example.zee.util.TextUtil.isValid(phone) == false)) {
             phone.setError("Invalid phone");
             return false;
         }
-        if (com.example.zee.Util.TextUtil.isEmpty(title) == true) {
+        if (com.example.zee.util.TextUtil.isEmpty(title) == true) {
             title.setError("Required");
             return false;
-        } else if ((com.example.zee.Util.TextUtil.isString(title) == false)) {
+        } else if ((com.example.zee.util.TextUtil.isString(title) == false)) {
             title.setError("Must be Alphabets");
             return false;
         }
-        if (com.example.zee.Util.TextUtil.isEmpty(companyName) == true) {
+        if (com.example.zee.util.TextUtil.isEmpty(companyName) == true) {
             companyName.setError("Required");
             return false;
-        } else if ((com.example.zee.Util.TextUtil.isString(companyName) == false)) {
+        } else if ((com.example.zee.util.TextUtil.isString(companyName) == false)) {
             companyName.setError("Must be Alphabets");
             return false;
         }
-        if (com.example.zee.Util.TextUtil.isEmpty(password) == true) {
+        if (com.example.zee.util.TextUtil.isEmpty(password) == true) {
             password.setError("Required");
             return false;
-        } else if (com.example.zee.Util.TextUtil.passIsValid(password) == false) {
+        } else if (com.example.zee.util.TextUtil.passIsValid(password) == false) {
             password.setError("At least 6 characters");
             return false;
         }
-        if (com.example.zee.Util.TextUtil.isEmpty(confirmPass) == true) {
+        if (com.example.zee.util.TextUtil.isEmpty(confirmPass) == true) {
             confirmPass.setError("Required");
             return false;
         } else if ((password.getText().toString().equals(confirmPass.getText().toString()))) {

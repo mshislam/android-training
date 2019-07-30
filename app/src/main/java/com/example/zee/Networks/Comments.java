@@ -75,19 +75,18 @@ public class Comments {
 //        ArrayList<com.example.zee.Models.ResponseList>responseArray=gson.fromJson(response,type);
 //    return responseArray;}
 
-    public static void createComments(final Context context, final String API_TOKEN, final String post_id, final CommentsInterface commentsInterface) {
-        RequestQueue mRequestQueue=Volley.newRequestQueue(context);
+    public static void createComments(final Context context, final String API_TOKEN, final String post_id, final String text, final CommentsInterface commentsInterface) {
+        RequestQueue mRequestQueue = Volley.newRequestQueue(context);
         StringRequest stringRequest = new StringRequest(Request.Method.POST,
-                WebServiceConstants.Comments.API_LIST_POSTCOMMENTS, new Response.Listener<String>() {
+                WebServiceConstants.Comments.API_CREATE_COMMENT, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 try {
-                    JSONObject jsonObject=new JSONObject(response);
-                    if(jsonObject.has("status")){
-                        if(jsonObject.getString("status").equals("success")){
+                    JSONObject jsonObject = new JSONObject(response);
+                    if (jsonObject.has("status")) {
+                        if (jsonObject.getString("status").equals("success")) {
                             commentsInterface.onComment(response);
-                        }
-                        else if (jsonObject.getString("success").equals("fail")) {
+                        } else if (jsonObject.getString("success").equals("fail")) {
                             Toast.makeText(context, "something went wrong", Toast.LENGTH_LONG);
                         }
                     }
@@ -101,18 +100,16 @@ public class Comments {
                 error.printStackTrace();
 
             }
-        }){
+        }) {
             @Override
             public Map<String, String> getParams() {
                 Map params = new HashMap();
                 params.put(WebServiceConstants.API_TOKEN, API_TOKEN);
-                params.put("limit", "10");
-                params.put("page", "1");
-                params.put(WebServiceConstants.Comments.post_id, post_id);
+                params.put(WebServiceConstants.Comments.text, text);
                 Log.e("paramaters", "getParams: " + params.toString());
                 return params;
-            }  };
+            }
+        };
         mRequestQueue.add(stringRequest);
-
-
-}}
+    }
+}

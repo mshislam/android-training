@@ -12,7 +12,7 @@ import androidx.fragment.app.Fragment;
 
 import com.example.zee.Networks.ForgetPass;
 import com.example.zee.R;
-import com.example.zee.Util.TextUtil;
+import com.example.zee.util.TextUtil;
 
 public class ForgetPassFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
