@@ -10,6 +10,7 @@
     <string name="name">Name</string>
     <string name="date">Date</string>
     <string name="commentsarea">Comments Area</string>
+    <string name="post">Post</string>
 
     >>>>>>> 03409144a50ec669e4139de0e32b80d7e24f313f
 </resources>
