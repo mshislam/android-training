@@ -33,7 +33,7 @@ public class LoginFragment extends Fragment {
         final View view = inflater.inflate(R.layout.fragment_login, container,
                 false);
 
-        com.example.zee.Util.SharedPrefUtil.getInstance(getContext()).write("apitoken", "");
+        com.example.zee.Util.SharedPrefUtil.getInstance(getContext()).write("api_token", "");
         emailtext = (EditText) view.findViewById(R.id.enteremailtext);
         password = (EditText) view.findViewById(R.id.enterpassword);
         registerbtn = view.findViewById(R.id.registerbutton);
