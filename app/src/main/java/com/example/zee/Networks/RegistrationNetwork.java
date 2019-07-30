@@ -31,7 +31,6 @@ public class RegistrationNetwork {
                     switch (jsonObject.getString("status")) {
                         case "success":
                             //new implementation
-
                             JSONObject ArrayFromString = null;
                             try {
                                 ArrayFromString = new JSONObject(response);
@@ -48,17 +47,14 @@ public class RegistrationNetwork {
                                     } else if (ArrayFromString.getString("status").equals("fail")) {
                                         Toast.makeText(context, "Invalid data!", Toast.LENGTH_SHORT).show();
                                     } else {
-                                        Toast.makeText(context, "Something went wrong!", Toast.LENGTH_SHORT).show();
-                                    }
+                                    Toast.makeText(context, "Something went wrong!", Toast.LENGTH_SHORT).show();
+                                }
                                 else {
                                     Toast.makeText(context, "Something went wrong!", Toast.LENGTH_SHORT).show();
                                 }
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }
-
-
-
                             break;
                         case "fail":
                             //TODO check for fail cases

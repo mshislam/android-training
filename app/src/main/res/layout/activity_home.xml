@@ -31,6 +31,7 @@
             android:inputType="none" />
 
         <Button
+            android:id="@+id/postbutton"
             android:layout_width="@dimen/_60sdp"
             android:layout_height="wrap_content"
             android:layout_below="@+id/postTextView"

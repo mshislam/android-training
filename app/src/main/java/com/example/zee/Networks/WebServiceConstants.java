@@ -15,6 +15,11 @@ public class WebServiceConstants {
         public static String title = "title";
     }
 
+    public static class createPost {
+        static String API_CREATEPOST = baseURL + "createPost";
+        public static String text = "text";
+    }
+
     public static class Comments {
         static String API_LIST_COMMENTS = baseURL + "listCommrnts";
         public static String post_id = "post_id";
