@@ -30,6 +30,8 @@ public class WebServiceConstants {
 
     public static class Comments {
         static String API_LIST_COMMENTS = baseURL + "listComments";
+        static String API_CREATE_COMMENT = baseURL + "createComment";
         public static String post_id = "post_id";
+        public static String text = "text";
     }
 }

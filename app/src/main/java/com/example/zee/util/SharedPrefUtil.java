@@ -1,4 +1,4 @@
-package com.example.zee.Util;
+package com.example.zee.util;
 
 import android.annotation.SuppressLint;
 import android.content.Context;

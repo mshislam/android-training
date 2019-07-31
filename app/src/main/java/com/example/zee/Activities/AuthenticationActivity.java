@@ -13,6 +13,7 @@ import com.example.zee.Fragments.LoginFragment;
 import com.example.zee.Fragments.RegisterFragment;
 import com.example.zee.R;
 import com.example.zee.util.Constants;
+import com.example.zee.util.SharedPrefUtil;
 
 public class AuthenticationActivity extends AppCompatActivity implements RegisterFragment.OnFragmentInteractionListener {
 
@@ -20,9 +21,9 @@ public class AuthenticationActivity extends AppCompatActivity implements Registe
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.authentication_activity);
-        Log.e("LogValue", "onCreate: ," + com.example.zee.Util.SharedPrefUtil.getInstance(this).read(Constants.apiToken, ""));
-        if (com.example.zee.Util.SharedPrefUtil.getInstance(this).read(Constants.apiToken, "").equals("") ||
-                com.example.zee.Util.SharedPrefUtil.getInstance(this).read(Constants.apiToken, "") == null) {
+        Log.e("LogValue", "onCreate: ," + SharedPrefUtil.getInstance(this).read(Constants.apiToken, ""));
+        if (SharedPrefUtil.getInstance(this).read(Constants.apiToken, "").equals("") ||
+                SharedPrefUtil.getInstance(this).read(Constants.apiToken, "") == null) {
             fragment();
         } else {
             Intent intent = new Intent(this, HomeActivity.class);

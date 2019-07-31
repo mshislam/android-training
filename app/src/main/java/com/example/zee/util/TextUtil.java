@@ -1,4 +1,4 @@
-package com.example.zee.Util;
+package com.example.zee.util;
 
 import android.util.Patterns;
 import android.widget.EditText;
