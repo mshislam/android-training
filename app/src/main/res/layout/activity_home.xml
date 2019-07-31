@@ -3,11 +3,60 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:id="@+id/postLayout"
+        android:layout_width="match_parent"
+        android:background="@drawable/round_button"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/_3sdp"
+        android:layout_marginRight="@dimen/_3sdp"
+        android:layout_marginTop="@dimen/_3sdp">
+        <!--<EditText
+            android:id="@+id/postTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white_color"
+            android:hint="@string/write_post"
+            android:inputType="text"/>-->
+
+        <EditText
+            android:id="@+id/postTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white_color"
+            android:hint="@string/write_post"
+            android:importantForAutofill="no"
+            android:backgroundTint="@color/white_color"
+            android:inputType="none" />
+
+        <Button
+            android:id="@+id/postbutton"
+            android:layout_width="@dimen/_60sdp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/postTextView"
+            android:layout_alignEnd="@+id/postTextView"
+            android:layout_alignRight="@+id/postTextView"
+            android:layout_marginTop="2dp"
+            android:layout_marginEnd="0dp"
+            android:layout_marginRight="0dp"
+            android:background="@drawable/round_text"
+            android:textColor="#5F5F5F"
+            android:outlineAmbientShadowColor="@color/white_color"
+            android:text="@string/post"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/postLayout">
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/homeRecyclerView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_5sdp"
         android:orientation="vertical"
         />
+    </RelativeLayout>
 </RelativeLayout>

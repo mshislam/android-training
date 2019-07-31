@@ -7,10 +7,17 @@
     <string name="login">login</string>
     <string name="forgotpassword">Forgot password ?</string>
     <string name="register">Register</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="company_name">Company name</string>
+    <string name="title">Title</string>
+    <string name="passwordHint">Password</string>
+    <string name="phone">Phone</string>
+    <string name="email">Email</string>
+    <string name="last_name">last name</string>
+    <string name="first_name">First name</string>
     <string name="name">Name</string>
     <string name="date">Date</string>
     <string name="commentsarea">Comments Area</string>
-    <string name="email">Email</string>
     <string name="validate">validate</string>
     <string name="code">Code</string>
     <string name="verCodeMess">Please enter verification code</string>
@@ -18,10 +25,6 @@
     <string name="Password">Password</string>
     <string name="confirmPassword">Confirm Password</string>
     <string name="setPassword">Set Password</string>
-
-
-
-
-
-    >>>>>>> 03409144a50ec669e4139de0e32b80d7e24f313f
+    <string name="post">Post</string>
+    <string name="write_post">Write post</string>
 </resources>

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -41,8 +42,6 @@ public class RegisterFragment extends Fragment {
     private EditText confirmPass;
     private EditText title;
     private EditText companyName;
-    private Button registerButton;
-    private Button backArrow;
     private OnFragmentInteractionListener mListener;
 
     public RegisterFragment() {
@@ -58,7 +57,7 @@ public class RegisterFragment extends Fragment {
      * @return A new instance of fragment RegisterFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static RegisterFragment newInstance(String param1, String param2) {
+    private static RegisterFragment newInstance(String param1, String param2) {
         RegisterFragment fragment = new RegisterFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
@@ -77,7 +76,7 @@ public class RegisterFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_register, container, false);
         firstName = view.findViewById(R.id.firstName);
@@ -88,8 +87,8 @@ public class RegisterFragment extends Fragment {
         confirmPass = view.findViewById(R.id.confirmPass);
         companyName = view.findViewById(R.id.company);
         title = view.findViewById(R.id.title);
-        backArrow = view.findViewById(R.id.backArrow);
-        registerButton = view.findViewById(R.id.registerButton);
+        Button backArrow = view.findViewById(R.id.backArrow);
+        Button registerButton = view.findViewById(R.id.registerButton);
 
         registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -119,7 +118,7 @@ public class RegisterFragment extends Fragment {
         setRandomValues();
         return view;
     }
-    public void setRandomValues() {
+    private void setRandomValues() {
         firstName.setText("testFN");
         lastName.setText("testLN");
         email.setText(generateRandomEmail());
@@ -130,7 +129,7 @@ public class RegisterFragment extends Fragment {
         title.setText("Android Developer");
     }
 
-    protected String generateRandomEmail() {
+    private String generateRandomEmail() {
         String SALTCHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
         StringBuilder salt = new StringBuilder();
         Random rnd = new Random();
@@ -143,7 +142,7 @@ public class RegisterFragment extends Fragment {
 
     }
 
-    protected String generateRandomMobile() {
+    private String generateRandomMobile() {
         String SALTCHARS = "1234567890";
         StringBuilder salt = new StringBuilder();
         Random rnd = new Random();
@@ -224,61 +223,61 @@ public class RegisterFragment extends Fragment {
         void onFragmentInteraction(Uri uri);
     }
 
-    public boolean validateAll() {
+    private boolean validateAll() {
 
-        if (com.example.zee.Util.TextUtil.isEmpty(firstName) == true) {
+        if (com.example.zee.Util.TextUtil.isEmpty(firstName)) {
             firstName.setError("Required");
             return false;
-        } else if ((com.example.zee.Util.TextUtil.isString(firstName) == false) || com.example.zee.Util.TextUtil.isEmpty(firstName) == true) {
+        } else if ((!com.example.zee.Util.TextUtil.isString(firstName)) || com.example.zee.Util.TextUtil.isEmpty(firstName)) {
             firstName.setError("Must be Alphabets");
             return false;
         }
-        if (com.example.zee.Util.TextUtil.isEmpty(lastName) == true) {
+        if (com.example.zee.Util.TextUtil.isEmpty(lastName)) {
             lastName.setError("Required");
             return false;
-        } else if ((com.example.zee.Util.TextUtil.isString(lastName) == false)) {
+        } else if ((!com.example.zee.Util.TextUtil.isString(lastName))) {
             lastName.setError("Must be Alphabets");
             return false;
         }
-        if (com.example.zee.Util.TextUtil.isEmpty(email) == true) {
+        if (com.example.zee.Util.TextUtil.isEmpty(email)) {
             email.setError("Required");
             return false;
-        } else if ((com.example.zee.Util.TextUtil.isValid(email) == false)) {
+        } else if ((!com.example.zee.Util.TextUtil.isValid(email))) {
             email.setError("Invalid email");
             return false;
         }
-        if (com.example.zee.Util.TextUtil.isEmpty(phone) == true) {
+        if (com.example.zee.Util.TextUtil.isEmpty(phone)) {
             phone.setError("Required");
             return false;
-        } else if ((com.example.zee.Util.TextUtil.isValid(phone) == false)) {
+        } else if ((!com.example.zee.Util.TextUtil.isValid(phone))) {
             phone.setError("Invalid phone");
             return false;
         }
-        if (com.example.zee.Util.TextUtil.isEmpty(title) == true) {
+        if (com.example.zee.Util.TextUtil.isEmpty(title)) {
             title.setError("Required");
             return false;
-        } else if ((com.example.zee.Util.TextUtil.isString(title) == false)) {
+        } else if ((!com.example.zee.Util.TextUtil.isString(title))) {
             title.setError("Must be Alphabets");
             return false;
         }
-        if (com.example.zee.Util.TextUtil.isEmpty(companyName) == true) {
+        if (com.example.zee.Util.TextUtil.isEmpty(companyName)) {
             companyName.setError("Required");
             return false;
-        } else if ((com.example.zee.Util.TextUtil.isString(companyName) == false)) {
+        } else if ((!com.example.zee.Util.TextUtil.isString(companyName))) {
             companyName.setError("Must be Alphabets");
             return false;
         }
-        if (com.example.zee.Util.TextUtil.isEmpty(password) == true) {
+        if (com.example.zee.Util.TextUtil.isEmpty(password)) {
             password.setError("Required");
             return false;
-        } else if (com.example.zee.Util.TextUtil.passIsValid(password) == false) {
+        } else if (!com.example.zee.Util.TextUtil.passIsValid(password)) {
             password.setError("At least 6 characters");
             return false;
         }
-        if (com.example.zee.Util.TextUtil.isEmpty(confirmPass) == true) {
+        if (com.example.zee.Util.TextUtil.isEmpty(confirmPass)) {
             confirmPass.setError("Required");
             return false;
-        } else if ((password.getText().toString().equals(confirmPass.getText().toString()))) {
+        } else if((password.getText().toString().equals(confirmPass.getText().toString()))) {
         } else {
             confirmPass.setError("Does not match");
             return false;
