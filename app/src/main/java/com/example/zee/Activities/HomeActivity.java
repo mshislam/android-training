@@ -41,7 +41,7 @@ public class HomeActivity extends AppCompatActivity implements HomeInterface {
         progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("create post please wait ...");
         progressDialog.setCancelable(false);
-        final String apiToken = com.example.zee.Util.SharedPrefUtil
+        final String apiToken = com.example.zee.util.SharedPrefUtil
                 .getInstance(HomeActivity.this).read(Constants.apiToken, "");
         PostsNetwork.listPosts(HomeActivity.this, apiToken, HomeActivity.this);
         postButton.setOnClickListener(new View.OnClickListener() {
@@ -62,7 +62,7 @@ public class HomeActivity extends AppCompatActivity implements HomeInterface {
     @Override
     public void listPosts(String response) {
         //TODO setData to adapter
-        Toast.makeText(this, " " + response, Toast.LENGTH_SHORT).show();
+//        Toast.makeText(this, " " + response, Toast.LENGTH_SHORT).show();
         ListPosts listPosts = new Gson().fromJson(response, ListPosts.class);
         listPosts.getPostsList();
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);

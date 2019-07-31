@@ -36,12 +36,12 @@ public class RegistrationNetwork {
                                 ArrayFromString = new JSONObject(response);
                                 if (ArrayFromString.has("status"))
                                     if (ArrayFromString.getString("status").equals("success")) {
-                                        com.example.zee.Util.SharedPrefUtil.getInstance(context)
+                                        com.example.zee.util.SharedPrefUtil.getInstance(context)
                                                 .write(Constants.apiToken, ArrayFromString.getJSONObject("user")
                                                         .getString("api_token"));
                                         Intent homeActivity = new Intent(context, HomeActivity.class);
-                                        com.example.zee.Util.SharedPrefUtil.getInstance(context).read(Constants.apiToken, "");
-                                        Log.e("sharedPreference", "onResponse: " + com.example.zee.Util.SharedPrefUtil.getInstance(context).read(Constants.apiToken, ""));
+                                        com.example.zee.util.SharedPrefUtil.getInstance(context).read(Constants.apiToken, "");
+                                        Log.e("sharedPreference", "onResponse: " + com.example.zee.util.SharedPrefUtil.getInstance(context).read(Constants.apiToken, ""));
                                         context.startActivity(homeActivity);
                                         //finish context
                                     } else if (ArrayFromString.getString("status").equals("fail")) {

@@ -19,7 +19,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Comments {
-    static com.example.zee.Activities.CommentsActivity commentsActivity;
 
     public static void listComments(final Context context, final String api_token, final String post_id, final CommentsInterface commentsInterface) {
         RequestQueue mRequestQueue = Volley.newRequestQueue(context);
@@ -58,7 +57,7 @@ public class Comments {
             public Map<String, String> getParams() {
                 Map params = new HashMap();
                 params.put(WebServiceConstants.API_TOKEN, api_token);
-                params.put("limit", "10");
+                params.put("limit", "100");
                 params.put("page", "1");
                 params.put(WebServiceConstants.Comments.post_id, post_id);
                 Log.e("paramaters", "getParams: " + params.toString());

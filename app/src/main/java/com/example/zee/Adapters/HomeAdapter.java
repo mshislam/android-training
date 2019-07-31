@@ -20,6 +20,7 @@ import com.example.zee.Models.User;
 import com.example.zee.R;
 
 import java.util.ArrayList;
+import com.example.zee.util.DateUtil;
 
 public class HomeAdapter extends RecyclerView.Adapter<HomeHolder> {
     private Activity activity;
@@ -47,7 +48,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeHolder> {
         else
             holder.imagePost.setVisibility(View.GONE);
         holder.content.setText(postsList.get(position).getPost().getText());
-        holder.date.setText(postsList.get(position).getPost().getCreated_at());
+        holder.date.setText(com.example.zee.util.DateUtil.getDate(postsList.get(position).getPost().getCreated_at()));
         holder.comment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -71,7 +71,6 @@ public class CommentActivity extends AppCompatActivity implements CommentsInterf
 //        com.example.zee.Models.ListComments responseArray = gson.fromJson(response, com.example.zee.Models.ListComments.class);
         com.example.zee.Models.ListComments responseArray = gson.fromJson(response, com.example.zee.Models.ListComments.class);
         ArrayList<ResponseList> myArray = responseArray.getList();
-        Toast.makeText(this, " " + response, Toast.LENGTH_SHORT).show();
         com.example.zee.Adapters.CommentsAdapter myAdapter = new CommentsAdapter(this, myArray);
         myComments.setAdapter(myAdapter);
 

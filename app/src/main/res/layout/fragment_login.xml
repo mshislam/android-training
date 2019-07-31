@@ -26,11 +26,7 @@
             android:hint="@string/email_or_phone_hint"
             android:importantForAutofill="no"
             android:inputType="textEmailAddress"
-            android:paddingStart="@dimen/_10sdp"
-            android:paddingLeft="@dimen/_10sdp"
-            android:paddingTop="@dimen/_7sdp"
-            android:paddingEnd="@dimen/_10sdp"
-            android:paddingBottom="@dimen/_7sdp"
+            android:padding="@dimen/_5sdp"
             android:textSize="@dimen/_15sdp"
             tools:ignore="RtlSymmetry"
             tools:targetApi="o" />
@@ -46,11 +42,7 @@
             android:background="@drawable/round_text"
             android:hint="@string/password"
             android:inputType="textPassword"
-            android:paddingStart="@dimen/_10sdp"
-            android:paddingLeft="@dimen/_10sdp"
-            android:paddingTop="@dimen/_7sdp"
-            android:paddingEnd="@dimen/_10sdp"
-            android:paddingBottom="@dimen/_7sdp"
+            android:padding="@dimen/_5sdp"
             android:textSize="@dimen/_15sdp"
             tools:targetApi="o" />
 
@@ -88,15 +80,7 @@
                 android:textAlignment="center"
                 android:textColor="#2196F3"
                 android:textStyle="bold|italic" />
-            <CheckBox
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="remember me"
-                android:textColor="#2196F3"
-                android:textStyle="bold|italic"
-                android:id="@+id/remembermecheckbox"
-                android:layout_below="@+id/forgotpasswordbutton"
-               />
+
 
             <TextView
                 android:id="@+id/registerbutton"
